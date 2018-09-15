@@ -11,7 +11,7 @@ import java.util.List;
  */
 public class FunctionalTwoTest {
 
-    FunctionalTwo functionalTwo = new FunctionalTwo();
+    private FunctionalTwo functionalTwo = new FunctionalTwo();
 
     @Test
     public void no9Test() {
