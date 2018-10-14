@@ -7,6 +7,32 @@ import java.util.Arrays;
 public class WarmupTwo {
 
     /*
+        TODO: Given a string, return the count of the number of times that a substring length 2 appears in the string and also
+        as the last 2 chars of the string, so "hixxxhi" yields 1 (we won't count the end substring).
+
+        last2("hixxhi") → 1
+        last2("xaxxaxaxx") → 1
+        last2("axxxaaxx") → 2
+
+        public int last2(String str) {
+
+        }
+    */
+
+    /*
+        TODO: Given an array of ints, return true if it contains a 2, 7, 1 pattern: a value, followed by the value plus 5,
+        followed by the value minus 1. Additionally the 271 counts even if the "1" differs by 2 or less from the correct value.
+
+        has271([1, 2, 7, 1]) → true
+        has271([1, 2, 8, 1]) → false
+        has271([2, 7, 1]) → true
+
+        public boolean has271(int[] nums) {
+
+        }
+    */
+
+    /*
         Count the number of "xx" in the given string. We'll say that overlapping is allowed, so "xxx" contains 2 "xx".
 
         countXX("abcxx") → 1
