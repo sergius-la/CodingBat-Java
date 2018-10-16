@@ -1,39 +1,25 @@
+import org.testng.annotations.Test;
+
 /**
     CodingBat: Array-2
     https://codingbat.com/java/Array-1
  */
 public class ArrayTwo {
 
-    /*
-        TODO: Given an array of ints, return true if it contains no 1's or it contains no 4's.
+    @Test
+    public void check() {
+        int[] one = {};
+        int[] two = {};
 
-        no14([1, 2, 3]) → true
-        no14([1, 2, 3, 4]) → false
-        no14([2, 3, 4]) → true
-    */
-
-    /*
-        TODO: Given arrays nums1 and nums2 of the same length, for every element in nums1, consider the corresponding element in nums2 (at the same index). Return the count of the number of times that the two elements differ by 2 or less, but are not equal.
-
-        matchUp([1, 2, 3], [2, 3, 10]) → 2
-        matchUp([1, 2, 3], [2, 3, 5]) → 3
-        matchUp([1, 2, 3], [2, 3, 3]) → 2
-    */
+    }
 
     /*
-        TODO: Return true if the group of N numbers at the start and end of the array are the same. For example, with {5, 6, 45, 99, 13, 5, 6}, the ends are the same for n=0 and n=2, and false for n=1 and n=3. You may assume that n is in the range 0..nums.length inclusive.
+        TODO: Return true if the group of N numbers at the start and end of the array are the same. For example, with {5, 6, 45, 99, 13, 5, 6},
+        the ends are the same for n=0 and n=2, and false for n=1 and n=3. You may assume that n is in the range 0..nums.length inclusive.
 
         sameEnds([5, 6, 45, 99, 13, 5, 6], 1) → false
         sameEnds([5, 6, 45, 99, 13, 5, 6], 2) → true
         sameEnds([5, 6, 45, 99, 13, 5, 6], 3) → false
-    */
-
-    /*
-        TODO: Return a version of the given array where all the 10's have been removed. The remaining elements should shift left towards the start of the array as needed, and the empty spaces a the end of the array should be 0. So {1, 10, 10, 2} yields {1, 2, 0, 0}. You may modify and return the given array or make a new array.
-
-        withoutTen([1, 10, 10, 2]) → [1, 2, 0, 0]
-        withoutTen([10, 2, 10]) → [2, 0, 0]
-        withoutTen([1, 99, 10]) → [1, 99, 0]
     */
 
     /*
@@ -42,14 +28,6 @@ public class ArrayTwo {
         fizzBuzz(1, 6) → ["1", "2", "Fizz", "4", "Buzz"]
         fizzBuzz(1, 8) → ["1", "2", "Fizz", "4", "Buzz", "Fizz", "7"]
         fizzBuzz(1, 11) → ["1", "2", "Fizz", "4", "Buzz", "Fizz", "7", "8", "Fizz", "Buzz"]
-    */
-
-    /*
-        TODO: Return the sum of the numbers in the array, except ignore sections of numbers starting with a 6 and extending to the next 7 (every 6 will be followed by at least one 7). Return 0 for no numbers.
-
-        sum67([1, 2, 2]) → 5
-        sum67([1, 2, 2, 6, 99, 99, 7]) → 5
-        sum67([1, 1, 6, 7, 2]) → 4
     */
 
     /*
@@ -171,6 +149,107 @@ public class ArrayTwo {
         evenOdd([3, 3, 2]) → [2, 3, 3]
         evenOdd([2, 2, 2]) → [2, 2, 2]
     */
+
+    /*
+        Return the sum of the numbers in the array, except ignore sections of numbers starting
+        with a 6 and extending to the next 7 (every 6 will be followed by at least one 7). Return 0 for no numbers.
+
+        sum67([1, 2, 2]) → 5
+        sum67([1, 2, 2, 6, 99, 99, 7]) → 5
+        sum67([1, 1, 6, 7, 2]) → 4
+    */
+
+    public int sum67(int[] nums) {
+        int count = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] == 6) {
+                for (int j = i; j < nums.length; j++) {
+                    if (nums[j] == 7) {
+                        i = j;
+                        break;
+                    }
+                }
+            } else {
+                count += nums[i];
+            }
+        }
+        return count;
+    }
+
+    /*
+        Return a version of the given array where all the 10's have been removed.
+        The remaining elements should shift left towards the start of the array as needed,
+        and the empty spaces a the end of the array should be 0. So {1, 10, 10, 2} yields {1, 2, 0, 0}.
+        You may modify and return the given array or make a new array.
+
+        withoutTen([1, 10, 10, 2]) → [1, 2, 0, 0]
+        withoutTen([10, 2, 10]) → [2, 0, 0]
+        withoutTen([1, 99, 10]) → [1, 99, 0]
+    */
+
+    public int[] withoutTen(int[] nums) {
+        int[] result = new int[nums.length];
+        for (int i = 0, j = 0; i < nums.length; i++) {
+            if (nums[i] != 10) {
+                result[j] = nums[i];
+                j++;
+            }
+        }
+        return result;
+    }
+
+    /*
+        Given arrays nums1 and nums2 of the same length, for every element in nums1, consider the corresponding
+        element in nums2 (at the same index). Return the count of the number of times that the two elements
+        differ by 2 or less, but are not equal.
+
+        matchUp([1, 2, 3], [2, 3, 10]) → 2
+        matchUp([1, 2, 3], [2, 3, 5]) → 3
+        matchUp([1, 2, 3], [2, 3, 3]) → 2
+    */
+
+    public int matchUp(int[] nums1, int[] nums2) {
+        int count = 0;
+        for (int i = 0; i < nums1.length; i++) {
+            if (diffCheck(nums1[i], nums2[i])) {
+                count ++;
+            }
+        }
+        return count;
+    }
+
+    private boolean diffCheck(int a, int b) {
+        if (a == b) return false;
+        return (Math.max(a, b) - Math.min(a, b) <= 2);
+    }
+
+    /*
+        Given an array of ints, return true if it contains no 1's or it contains no 4's.
+
+        no14([1, 2, 3]) → true
+        no14([1, 2, 3, 4]) → false
+        no14([2, 3, 4]) → true
+    */
+
+    public boolean no14(int[] nums) {
+        boolean containsOne = false;
+        boolean containsFour = false;
+
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] == 1) {
+                containsOne = true;
+            }
+            if (nums[i] == 4) {
+                containsFour = true;
+            }
+        }
+
+        if (containsOne && containsFour) {
+            return false;
+        } else {
+            return true;
+        }
+    }
 
     /*
         Given a non-empty array of ints, return a new array containing the elements from the original array that come before
