@@ -5,6 +5,135 @@
 public class StringOne {
 
     /*
+        TODO: Given a string and a second "word" string, we'll say that the word matches the string if it appears at the front of the string, except its first char does not need to match exactly. On a match, return the front of the string, or otherwise return the empty string. So, so with the string "hippo" the word "hi" returns "hi" and "xip" returns "hip". The word will be at least length 1.
+
+        startWord("hippo", "hi") → "hi"
+        startWord("hippo", "xip") → "hip"
+        startWord("hippo", "i") → "h"
+
+        public String startWord(String str, String word) {
+
+        }
+    */
+
+    /*
+        TODO: Given a string and an int n, return a string made of the first and last n chars from the string. The string length will be at least n.
+
+        nTwice("Hello", 2) → "Helo"
+        nTwice("Chocolate", 3) → "Choate"
+        nTwice("Chocolate", 1) → "Ce"
+
+        public String nTwice(String str, int n) {
+
+        }
+    */
+
+    /*
+        TODO: Given a string, return true if "bad" appears starting at index 0 or 1 in the string, such as with "badxxx" or "xbadxx" but not "xxbadxx". The string may be any length, including 0. Note: use .equals() to compare 2 strings.
+
+        hasBad("badxx") → true
+        hasBad("xbadxx") → true
+        hasBad("xxbadxx") → false
+
+        public boolean hasBad(String str) {
+
+        }
+    */
+
+    /*
+        TODO: Given two strings, append them together (known as "concatenation") and return the result. However, if the concatenation creates a double-char, then omit one of the chars, so "abc" and "cat" yields "abcat".
+
+        conCat("abc", "cat") → "abcat"
+        conCat("dog", "cat") → "dogcat"
+        conCat("abc", "") → "abc"
+
+        public String conCat(String a, String b) {
+
+        }
+    */
+
+    /*
+        TODO: Given a string, if a length 2 substring appears at both its beginning and end, return a string without the substring at the beginning, so "HelloHe" yields "lloHe". The substring may overlap with itself, so "Hi" yields "". Otherwise, return the original string unchanged.
+
+        without2("HelloHe") → "lloHe"
+        without2("HelloHi") → "HelloHi"
+        without2("Hi") → ""
+
+        public String without2(String str) {
+
+        }
+    */
+
+    /*
+        TODO: Given a string, if the first or last chars are 'x', return the string without those 'x' chars, and otherwise return the string unchanged.
+
+        withoutX("xHix") → "Hi"
+        withoutX("xHi") → "Hi"
+        withoutX("Hxix") → "Hxi"
+
+        public String withoutX(String str) {
+
+        }
+
+    */
+
+    /*
+        TODO: Given a string, return a "rotated right 2" version where the last 2 chars are moved to the start. The string length will be at least 2.
+
+        right2("Hello") → "loHel"
+        right2("java") → "vaja"
+        right2("Hi") → "Hi"
+
+        public String right2(String str) {
+
+         }
+    */
+
+    /*
+        TODO: Given a string and an index, return a string length 2 starting at the given index. If the index is too big or too small to define a string length 2, use the first 2 chars. The string length will be at least 2.
+
+        twoChar("java", 0) → "ja"
+        twoChar("java", 2) → "va"
+        twoChar("java", 3) → "ja"
+
+    */
+
+    /*
+        TODO: Given a string of any length, return a new string where the last 2 chars, if present, are swapped, so "coding" yields "codign".
+
+        lastTwo("coding") → "codign"
+        lastTwo("cat") → "cta"
+        lastTwo("ab") → "ba"
+
+        public String lastTwo(String str) {
+
+        }
+    */
+
+    /*
+        TODO: Given two strings, append them together (known as "concatenation") and return the result. However, if the strings are different lengths, omit chars from the longer string so it is the same length as the shorter string. So "Hello" and "Hi" yield "loHi". The strings may be any length.
+
+        minCat("Hello", "Hi") → "loHi"
+        minCat("Hello", "java") → "ellojava"
+        minCat("java", "Hello") → "javaello"
+
+        public String minCat(String a, String b) {
+
+        }
+
+    */
+
+    /*
+        TODO:
+
+    */
+
+    /*
+        TODO:
+
+    */
+
+    /*
         Given a string, if the string begins with "red" or "blue" return that color string, otherwise return the empty string.
 
         seeColor("redxx") → "red"
