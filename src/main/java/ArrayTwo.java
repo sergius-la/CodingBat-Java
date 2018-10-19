@@ -14,23 +14,6 @@ public class ArrayTwo {
     }
 
     /*
-        TODO: Return true if the group of N numbers at the start and end of the array are the same. For example, with {5, 6, 45, 99, 13, 5, 6},
-        the ends are the same for n=0 and n=2, and false for n=1 and n=3. You may assume that n is in the range 0..nums.length inclusive.
-
-        sameEnds([5, 6, 45, 99, 13, 5, 6], 1) → false
-        sameEnds([5, 6, 45, 99, 13, 5, 6], 2) → true
-        sameEnds([5, 6, 45, 99, 13, 5, 6], 3) → false
-    */
-
-    /*
-        TODO: This is slightly more difficult version of the famous FizzBuzz problem which is sometimes given as a first problem for job interviews. (See also: FizzBuzz Code.) Consider the series of numbers beginning at start and running up to but not including end, so for example start=1 and end=5 gives the series 1, 2, 3, 4. Return a new String[] array containing the string form of these numbers, except for multiples of 3, use "Fizz" instead of the number, for multiples of 5 use "Buzz", and for multiples of both 3 and 5 use "FizzBuzz". In Java, String.valueOf(xxx) will make the String form of an int or other type. This version is a little more complicated than the usual version since you have to allocate and index into an array instead of just printing, and we vary the start/end instead of just always doing 1..100.
-
-        fizzBuzz(1, 6) → ["1", "2", "Fizz", "4", "Buzz"]
-        fizzBuzz(1, 8) → ["1", "2", "Fizz", "4", "Buzz", "Fizz", "7"]
-        fizzBuzz(1, 11) → ["1", "2", "Fizz", "4", "Buzz", "Fizz", "7", "8", "Fizz", "Buzz"]
-    */
-
-    /*
         TODO: We'll say that a value is "everywhere" in an array if for every pair of adjacent elements in the array, at least one of the pair is that value. Return true if the given value is everywhere in the array.
 
         isEverywhere([1, 2, 1, 3], 1) → true
@@ -39,27 +22,11 @@ public class ArrayTwo {
     */
 
     /*
-        TODO: Given an array of ints, return true if the array contains two 7's next to each other, or there are two 7's separated by one element, such as with {7, 1, 7}.
-
-        has77([1, 7, 7]) → true
-        has77([1, 7, 1, 7]) → true
-        has77([1, 7, 1, 1, 7]) → false
-    */
-
-    /*
         TODO: Given an array of ints, return true if the value 3 appears in the array exactly 3 times, and no 3's are next to each other.
 
         haveThree([3, 1, 3, 1, 3]) → true
         haveThree([3, 1, 3, 3]) → false
         haveThree([3, 4, 3, 3, 4]) → false
-    */
-
-    /*
-        TODO: Return true if the array contains, somewhere, three increasing adjacent numbers like .... 4, 5, 6, ... or 23, 24, 25.
-
-        tripleUp([1, 4, 5, 6, 2]) → true
-        tripleUp([1, 2, 3]) → true
-        tripleUp([1, 2, 4]) → false
     */
 
     /*
@@ -84,22 +51,6 @@ public class ArrayTwo {
         centeredAverage([1, 2, 3, 4, 100]) → 3
         centeredAverage([1, 1, 5, 5, 10, 8, 7]) → 5
         centeredAverage([-10, -4, -2, -4, -2, 0]) → -3
-    */
-
-    /*
-        TODO: Given an array of ints, return true if the array contains a 2 next to a 2 somewhere.
-
-        has22([1, 2, 2]) → true
-        has22([1, 2, 1, 2]) → false
-        has22([2, 1, 2]) → false
-    */
-
-    /*
-        TODO: Given an array of ints, return true if the number of 1's is greater than the number of 4's
-
-        more14([1, 4, 1]) → true
-        more14([1, 4, 1, 4]) → false
-        more14([1, 1]) → true
     */
 
     /*
@@ -149,6 +100,147 @@ public class ArrayTwo {
         evenOdd([3, 3, 2]) → [2, 3, 3]
         evenOdd([2, 2, 2]) → [2, 2, 2]
     */
+
+    /*
+        Given an array of ints, return true if the number of 1's is greater than the number of 4's
+
+        more14([1, 4, 1]) → true
+        more14([1, 4, 1, 4]) → false
+        more14([1, 1]) → true
+    */
+
+    public boolean more14(int[] nums) {
+        int one = 0;
+        int four = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] == 1) {
+                one ++;
+            }
+
+            if (nums[i] == 4) {
+                four ++;
+            }
+        }
+        return (one > four);
+    }
+
+    /*
+        Given an array of ints, return true if the array contains a 2 next to a 2 somewhere.
+
+        has22([1, 2, 2]) → true
+        has22([1, 2, 1, 2]) → false
+        has22([2, 1, 2]) → false
+    */
+
+    public boolean has22(int[] nums) {
+        for (int i = 0; i < nums.length-1; i++) {
+            if (nums[i] == 2 && nums[i+1] == 2) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /*
+        Return true if the array contains, somewhere, three increasing adjacent numbers like .... 4, 5, 6, ... or 23, 24, 25.
+
+        tripleUp([1, 4, 5, 6, 2]) → true
+        tripleUp([1, 2, 3]) → true
+        tripleUp([1, 2, 4]) → false
+    */
+
+    public boolean tripleUp(int[] nums) {
+        if (nums.length < 3) {
+            return false;
+        }
+
+        for (int i = 0; i < nums.length-2; i++) {
+            if (checkThree(nums[i], nums[i+1], nums[i+2])) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean checkThree(int one, int two, int three) {
+        return (two - one == 1 && three - two == 1);
+    }
+
+    /*
+        Given an array of ints, return true if the array contains two 7's next to each other,
+        or there are two 7's separated by one element, such as with {7, 1, 7}.
+
+        has77([1, 7, 7]) → true
+        has77([1, 7, 1, 7]) → true
+        has77([1, 7, 1, 1, 7]) → false
+    */
+
+    public boolean has77(int[] nums) {
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] == 7) {
+                if (i+1 < nums.length) {
+                    if (nums[i+1] == 7) {
+                        return true;
+                    }
+                }
+
+                if (i+2 < nums.length) {
+                    if (nums[i+2] == 7) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
+    /*
+        This is slightly more difficult version of the famous FizzBuzz problem which is sometimes given as a first problem for job interviews.
+        (See also: FizzBuzz Code.) Consider the series of numbers beginning at start and running up to but not including end,
+        so for example start=1 and end=5 gives the series 1, 2, 3, 4. Return a new String[] array containing the string form of these numbers,
+        except for multiples of 3, use "Fizz" instead of the number, for multiples of 5 use "Buzz", and for multiples of both 3 and 5 use "FizzBuzz".
+        In Java, String.valueOf(xxx) will make the String form of an int or other type. This version is a little more complicated than the usual version
+        since you have to allocate and index into an array instead of just printing, and we vary the start/end instead of just always doing 1..100.
+
+        fizzBuzz(1, 6) → ["1", "2", "Fizz", "4", "Buzz"]
+        fizzBuzz(1, 8) → ["1", "2", "Fizz", "4", "Buzz", "Fizz", "7"]
+        fizzBuzz(1, 11) → ["1", "2", "Fizz", "4", "Buzz", "Fizz", "7", "8", "Fizz", "Buzz"]
+    */
+
+    public String[] fizzBuzz(int start, int end) {
+        String[] result = new String[end - start];
+        for (int i = 0, j = start; i < result.length; i++, j++) {
+            if (j % 3 == 0 && j % 5 == 0) {
+                result[i] = "FizzBuzz";
+            } else if (j % 3 == 0) {
+                result[i] = "Fizz";
+            } else if (j % 5 == 0) {
+                result[i] = "Buzz";
+            } else {
+                result[i] = String.valueOf(j);
+            }
+        }
+        return result;
+    }
+
+    /*
+        Return true if the group of N numbers at the start and end of the array are the same. For example, with {5, 6, 45, 99, 13, 5, 6},
+        the ends are the same for n=0 and n=2, and false for n=1 and n=3. You may assume that n is in the range 0..nums.length inclusive.
+
+        sameEnds([5, 6, 45, 99, 13, 5, 6], 1) → false
+        sameEnds([5, 6, 45, 99, 13, 5, 6], 2) → true
+        sameEnds([5, 6, 45, 99, 13, 5, 6], 3) → false
+    */
+
+    public boolean sameEnds(int[] nums, int len) {
+        boolean result = true;
+        for (int i = 0, j = nums.length-len; i < len; i++, j++) {
+            if (nums[i] != nums[j]) {
+                return false;
+            }
+        }
+        return result;
+    }
 
     /*
         Return the sum of the numbers in the array, except ignore sections of numbers starting
