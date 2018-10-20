@@ -1,5 +1,7 @@
 import org.testng.annotations.Test;
 
+import java.util.Arrays;
+
 /**
  *  CodingBat: Array-2
  *  https://codingbat.com/java/Array-1
@@ -8,18 +10,10 @@ public class ArrayTwo {
 
     @Test
     public void check() {
-        int[] one = {};
+        int[] one = {0, 2};
         int[] two = {};
-
+        System.out.println(Arrays.toString(tenRun(one)));
     }
-
-    /*
-        TODO: For each multiple of 10 in the given array, change all the values following it to be that multiple of 10, until encountering another multiple of 10. So {2, 10, 3, 4, 20, 5} yields {2, 10, 10, 10, 20, 20}.
-
-        tenRun([2, 10, 3, 4, 20, 5]) → [2, 10, 10, 10, 20, 20]
-        tenRun([10, 1, 20, 2]) → [10, 10, 20, 20]
-        tenRun([10, 1, 9, 20]) → [10, 10, 10, 20]
-    */
 
     /*
         TODO: We'll say that an element in an array is "alone" if there are values before and after it, and those values are different from it. Return a version of the given array where every instance of the given value which is alone is replaced by whichever value to its left or right is larger.
@@ -38,28 +32,85 @@ public class ArrayTwo {
     */
 
     /*
-        TODO: Given a number n, create and return a new string array of length n, containing the strings "0", "1" "2" .. through n-1. N may be 0, in which case just return a length 0 array. Note: String.valueOf(xxx) will make the String form of most types. The syntax to make a new string array is: new String[desired_length]  (See also: FizzBuzz Code)
-
-        fizzArray2(4) → ["0", "1", "2", "3"]
-        fizzArray2(10) → ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
-        fizzArray2(2) → ["0", "1"]
-    */
-
-    /*
-        TODO: Return an array that contains the exact same numbers as the given array, but rearranged so that all the zeros are grouped at the start of the array. The order of the non-zero numbers does not matter. So {1, 0, 0, 1} becomes {0 ,0, 1, 1}. You may modify and return the given array or make a new array.
-
-        zeroFront([1, 0, 0, 1]) → [0, 0, 1, 1]
-        zeroFront([0, 1, 1, 0, 1]) → [0, 0, 1, 1, 1]
-        zeroFront([1, 0]) → [0, 1]
-    */
-
-    /*
         TODO: Return an array that contains the exact same numbers as the given array, but rearranged so that all the even numbers come before all the odd numbers. Other than that, the numbers can be in any order. You may modify and return the given array, or make a new array.
 
         evenOdd([1, 0, 1, 0, 0, 1, 1]) → [0, 0, 0, 1, 1, 1, 1]
         evenOdd([3, 3, 2]) → [2, 3, 3]
         evenOdd([2, 2, 2]) → [2, 2, 2]
     */
+
+    /*
+        TODO: Return a version of the given array where each zero value in the array is replaced by the largest odd value to the right of the zero in the array. If there is no odd value to the right of the zero, leave the zero as a zero.
+
+        zeroMax([0, 5, 0, 3]) → [5, 5, 3, 3]
+        zeroMax([0, 4, 0, 3]) → [3, 4, 3, 3]
+        zeroMax([0, 1, 0]) → [1, 1, 0]
+    */
+
+    /*
+        Return an array that contains the exact same numbers as the given array, but rearranged so that all the zeros are grouped at the start of the array.
+        The order of the non-zero numbers does not matter. So {1, 0, 0, 1} becomes {0 ,0, 1, 1}. You may modify and return the given array or make a new array.
+
+        zeroFront([1, 0, 0, 1]) → [0, 0, 1, 1]
+        zeroFront([0, 1, 1, 0, 1]) → [0, 0, 1, 1, 1]
+        zeroFront([1, 0]) → [0, 1]
+    */
+
+    public int[] zeroFront(int[] nums) {
+        int[] result = new int[nums.length];
+        for (int i = 0, j = 1; i < result.length; i++) {
+            if (nums[i] != 0) {
+                result[result.length-j] = nums[i];
+                j++;
+            }
+        }
+        return result;
+    }
+
+    /*
+        Given a number n, create and return a new string array of length n, containing the strings "0", "1" "2" .. through n-1.
+        N may be 0, in which case just return a length 0 array. Note: String.valueOf(xxx) will make the String form of most types.
+        The syntax to make a new string array is: new String[desired_length]  (See also: FizzBuzz Code)
+
+        fizzArray2(4) → ["0", "1", "2", "3"]
+        fizzArray2(10) → ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+        fizzArray2(2) → ["0", "1"]
+    */
+
+    public String[] fizzArray2(int n) {
+        String[] result = new String[n];
+        for (int i = 0; i < n; i++) {
+            result[i] = String.valueOf(i);
+        }
+        return result;
+    }
+
+    /*
+        For each multiple of 10 in the given array, change all the values following it to be that multiple of 10,
+        until encountering another multiple of 10. So {2, 10, 3, 4, 20, 5} yields {2, 10, 10, 10, 20, 20}.
+
+        tenRun([2, 10, 3, 4, 20, 5]) → [2, 10, 10, 10, 20, 20]
+        tenRun([10, 1, 20, 2]) → [10, 10, 20, 20]
+        tenRun([10, 1, 9, 20]) → [10, 10, 10, 20]
+    */
+
+    public int[] tenRun(int[] nums) {
+        int[] result = new int[nums.length];
+        int multipleOfTen = -1;
+        for (int i = 0; i < result.length; i++) {
+            if (nums[i] % 10 == 0) {
+                multipleOfTen = nums[i];
+
+            }
+
+            if (multipleOfTen > -1) {
+                result[i] = multipleOfTen;
+            } else {
+                result[i] = nums[i];
+            }
+        }
+        return result;
+    }
 
     /*
         Given an array of ints, return true if the value 3 appears in the array exactly 3 times, and no 3's are next to each other.
