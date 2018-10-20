@@ -10,6 +10,9 @@ CodingBat is a free site of live coding problems to build coding skill in Java a
   ### String-1
  (todo) Basic string problems -- no loops. Use + to combine Strings, str.length() is the number of chars in a String, str.substring(i, j) extracts the substring starting at index i and running up to but not including index j. - [link](https://github.com/sergius-la/CodingBat-Java/blob/master/src/main/java/StringOne.java)
 
+ ### String-2
+ (todo) [link](https://codingbat.com/java/String-2)
+
  ### Map-1
  Basic Map get()/put(), no loops. These can be solved with just get(), put(), and containsKey() - [link](https://github.com/sergius-la/CodingBat-Java/blob/master/src/main/java/MapOne.java)
 

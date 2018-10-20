@@ -1,8 +1,8 @@
 import org.testng.annotations.Test;
 
 /**
- * CodingBat: Array-2
- * https://codingbat.com/java/Array-1
+ *  CodingBat: Array-2
+ *  https://codingbat.com/java/Array-1
  */
 public class ArrayTwo {
 

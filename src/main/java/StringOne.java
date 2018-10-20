@@ -1,5 +1,6 @@
 /**
- * CodingBat: String-2
+ *  CodingBat: String-2
+ *  https://codingbat.com/java/String-2
  */
 
 public class StringOne {
