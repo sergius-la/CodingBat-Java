@@ -1,8 +1,8 @@
 import org.testng.annotations.Test;
 
 /**
-    CodingBat: Array-2
-    https://codingbat.com/java/Array-1
+ * CodingBat: Array-2
+ * https://codingbat.com/java/Array-1
  */
 public class ArrayTwo {
 
@@ -12,22 +12,6 @@ public class ArrayTwo {
         int[] two = {};
 
     }
-
-    /*
-        TODO: We'll say that a value is "everywhere" in an array if for every pair of adjacent elements in the array, at least one of the pair is that value. Return true if the given value is everywhere in the array.
-
-        isEverywhere([1, 2, 1, 3], 1) → true
-        isEverywhere([1, 2, 1, 3], 2) → false
-        isEverywhere([1, 2, 1, 3, 4], 1) → false
-    */
-
-    /*
-        TODO: Given an array of ints, return true if the value 3 appears in the array exactly 3 times, and no 3's are next to each other.
-
-        haveThree([3, 1, 3, 1, 3]) → true
-        haveThree([3, 1, 3, 3]) → false
-        haveThree([3, 4, 3, 3, 4]) → false
-    */
 
     /*
         TODO: For each multiple of 10 in the given array, change all the values following it to be that multiple of 10, until encountering another multiple of 10. So {2, 10, 3, 4, 20, 5} yields {2, 10, 10, 10, 20, 20}.
@@ -62,30 +46,6 @@ public class ArrayTwo {
     */
 
     /*
-        TODO: Given an array of ints, return true if the array contains a 2 next to a 2 or a 4 next to a 4, but not both.
-
-        either24([1, 2, 2]) → true
-        either24([4, 4, 1]) → true
-        either24([4, 4, 1, 2, 2]) → false
-    */
-
-    /*
-        TODO: Given an array of ints, return true if there is a 1 in the array with a 2 somewhere later in the array.
-
-        has12([1, 3, 2]) → true
-        has12([3, 1, 2]) → true
-        has12([3, 1, 4, 5, 2]) → true
-    */
-
-    /*
-        TODO: Given start and end numbers, return a new array containing the sequence of integers from start up to but not including end, so start=5 and end=10 yields {5, 6, 7, 8, 9}. The end number will be greater or equal to the start number. Note that a length-0 array is valid. (See also: FizzBuzz Code)
-
-        fizzArray3(5, 10) → [5, 6, 7, 8, 9]
-        fizzArray3(11, 18) → [11, 12, 13, 14, 15, 16, 17]
-        fizzArray3(1, 3) → [1, 2]
-    */
-
-    /*
         TODO: Return an array that contains the exact same numbers as the given array, but rearranged so that all the zeros are grouped at the start of the array. The order of the non-zero numbers does not matter. So {1, 0, 0, 1} becomes {0 ,0, 1, 1}. You may modify and return the given array or make a new array.
 
         zeroFront([1, 0, 0, 1]) → [0, 0, 1, 1]
@@ -102,6 +62,120 @@ public class ArrayTwo {
     */
 
     /*
+        Given an array of ints, return true if the value 3 appears in the array exactly 3 times, and no 3's are next to each other.
+
+        haveThree([3, 1, 3, 1, 3]) → true
+        haveThree([3, 1, 3, 3]) → false
+        haveThree([3, 4, 3, 3, 4]) → false
+    */
+
+    public boolean haveThree(int[] nums) {
+        int countThree = countTarget(nums, 3);
+        for (int i = 0; i < nums.length - 1; i++) {
+            if (nums[i] == 3 && nums[i + 1] == 3) {
+                return false;
+            }
+        }
+        return (countThree == 3);
+    }
+
+    private int countTarget(int[] nums, int target) {
+        int count = 0;
+        for (int i : nums) {
+            if (i == target) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    /*
+        We'll say that a value is "everywhere" in an array if for every pair of adjacent elements in the array,
+        at least one of the pair is that value. Return true if the given value is everywhere in the array.
+
+        isEverywhere([1, 2, 1, 3], 1) → true
+        isEverywhere([1, 2, 1, 3], 2) → false
+        isEverywhere([1, 2, 1, 3, 4], 1) → false
+    */
+
+    public boolean isEverywhere(int[] nums, int val) {
+        for (int i = 0; i < nums.length - 1; i++) {
+            if (nums[i] != val && nums[i + 1] != val) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /*
+        Given start and end numbers, return a new array containing the sequence of integers from start up to but not including end,
+        so start=5 and end=10 yields {5, 6, 7, 8, 9}. The end number will be greater or equal to the start number.
+        Note that a length-0 array is valid. (See also: FizzBuzz Code)
+
+        fizzArray3(5, 10) → [5, 6, 7, 8, 9]
+        fizzArray3(11, 18) → [11, 12, 13, 14, 15, 16, 17]
+        fizzArray3(1, 3) → [1, 2]
+    */
+
+    public int[] fizzArray3(int start, int end) {
+        int[] result = new int[end - start];
+        for (int i = start, j = 0; j < result.length; i++, j++) {
+            result[j] = i;
+        }
+        return result;
+    }
+
+    /*
+        Given an array of ints, return true if there is a 1 in the array with a 2 somewhere later in the array.
+
+        has12([1, 3, 2]) → true
+        has12([3, 1, 2]) → true
+        has12([3, 1, 4, 5, 2]) → true
+    */
+
+    public boolean has12(int[] nums) {
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] == 1) {
+                for (int j = i; j < nums.length; j++) {
+                    if (nums[j] == 2) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
+    /*
+        Given an array of ints, return true if the array contains a 2 next to a 2 or a 4 next to a 4, but not both.
+
+        either24([1, 2, 2]) → true
+        either24([4, 4, 1]) → true
+        either24([4, 4, 1, 2, 2]) → false
+    */
+
+    public boolean either24(int[] nums) {
+        boolean two = checkNumbes(nums, 2);
+        boolean four = checkNumbes(nums, 4);
+        ;
+
+        if ((two && four) || (!two && !four)) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    private boolean checkNumbes(int[] nums, int target) {
+        for (int i = 0; i < nums.length - 1; i++) {
+            if (nums[i] == target && nums[i + 1] == target) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /*
         Given an array of ints, return true if the number of 1's is greater than the number of 4's
 
         more14([1, 4, 1]) → true
@@ -114,11 +188,11 @@ public class ArrayTwo {
         int four = 0;
         for (int i = 0; i < nums.length; i++) {
             if (nums[i] == 1) {
-                one ++;
+                one++;
             }
 
             if (nums[i] == 4) {
-                four ++;
+                four++;
             }
         }
         return (one > four);
@@ -133,8 +207,8 @@ public class ArrayTwo {
     */
 
     public boolean has22(int[] nums) {
-        for (int i = 0; i < nums.length-1; i++) {
-            if (nums[i] == 2 && nums[i+1] == 2) {
+        for (int i = 0; i < nums.length - 1; i++) {
+            if (nums[i] == 2 && nums[i + 1] == 2) {
                 return true;
             }
         }
@@ -154,8 +228,8 @@ public class ArrayTwo {
             return false;
         }
 
-        for (int i = 0; i < nums.length-2; i++) {
-            if (checkThree(nums[i], nums[i+1], nums[i+2])) {
+        for (int i = 0; i < nums.length - 2; i++) {
+            if (checkThree(nums[i], nums[i + 1], nums[i + 2])) {
                 return true;
             }
         }
@@ -178,14 +252,14 @@ public class ArrayTwo {
     public boolean has77(int[] nums) {
         for (int i = 0; i < nums.length; i++) {
             if (nums[i] == 7) {
-                if (i+1 < nums.length) {
-                    if (nums[i+1] == 7) {
+                if (i + 1 < nums.length) {
+                    if (nums[i + 1] == 7) {
                         return true;
                     }
                 }
 
-                if (i+2 < nums.length) {
-                    if (nums[i+2] == 7) {
+                if (i + 2 < nums.length) {
+                    if (nums[i + 2] == 7) {
                         return true;
                     }
                 }
@@ -234,7 +308,7 @@ public class ArrayTwo {
 
     public boolean sameEnds(int[] nums, int len) {
         boolean result = true;
-        for (int i = 0, j = nums.length-len; i < len; i++, j++) {
+        for (int i = 0, j = nums.length - len; i < len; i++, j++) {
             if (nums[i] != nums[j]) {
                 return false;
             }
@@ -304,7 +378,7 @@ public class ArrayTwo {
         int count = 0;
         for (int i = 0; i < nums1.length; i++) {
             if (diffCheck(nums1[i], nums2[i])) {
-                count ++;
+                count++;
             }
         }
         return count;
@@ -385,10 +459,10 @@ public class ArrayTwo {
         }
 
         int temp = nums[0];
-        for (int i = 0; i < nums.length-1; i++) {
-            nums[i] = nums[i+1];
+        for (int i = 0; i < nums.length - 1; i++) {
+            nums[i] = nums[i + 1];
         }
-        nums[nums.length -1] = temp;
+        nums[nums.length - 1] = temp;
 
         return nums;
     }
@@ -408,7 +482,7 @@ public class ArrayTwo {
         for (int i = 0; i < nums.length; i++) {
 
             if (nums[i] == 13) {
-                i ++;
+                i++;
             } else {
                 sum += nums[i];
             }
@@ -473,10 +547,10 @@ public class ArrayTwo {
             }
 
             if (nums[i] % 2 == 0) {
-                even ++;
+                even++;
                 odd = 0;
             } else {
-                odd ++;
+                odd++;
                 even = 0;
             }
         }
@@ -574,9 +648,9 @@ public class ArrayTwo {
         for (int i = 0; i < nums.length; i++) {
             if (nums[i] == 2) {
 
-                if (i+1 > nums.length-1) {
+                if (i + 1 > nums.length - 1) {
 
-                    if (nums[i-1] == 2) {
+                    if (nums[i - 1] == 2) {
                         result = true;
                         break;
                     } else {
@@ -585,7 +659,7 @@ public class ArrayTwo {
                     }
                 }
 
-                if (nums[i+1] == 2) {
+                if (nums[i + 1] == 2) {
                     result = true;
                     i++;
                 } else {
@@ -629,15 +703,15 @@ public class ArrayTwo {
 
         int index = 0;
 
-        for (int i = nums.length-1; i > 0; i--) {
+        for (int i = nums.length - 1; i > 0; i--) {
             if (nums[i] == 4) {
                 index = i;
                 break;
             }
         }
 
-        int[] result = new int[nums.length-1 - index];
-        for (int i = 0, j = index+1; i < result.length; i++, j++) {
+        int[] result = new int[nums.length - 1 - index];
+        for (int i = 0, j = index + 1; i < result.length; i++, j++) {
             result[i] = nums[j];
         }
         return result;

@@ -17,18 +17,6 @@ public class StringOne {
     */
 
     /*
-        TODO: Given a string and an int n, return a string made of the first and last n chars from the string. The string length will be at least n.
-
-        nTwice("Hello", 2) → "Helo"
-        nTwice("Chocolate", 3) → "Choate"
-        nTwice("Chocolate", 1) → "Ce"
-
-        public String nTwice(String str, int n) {
-
-        }
-    */
-
-    /*
         TODO: Given a string, return true if "bad" appears starting at index 0 or 1 in the string, such as with "badxxx" or "xbadxx" but not "xxbadxx". The string may be any length, including 0. Note: use .equals() to compare 2 strings.
 
         hasBad("badxx") → true
@@ -38,17 +26,19 @@ public class StringOne {
         public boolean hasBad(String str) {
 
         }
-    */
 
-    /*
-        TODO: Given two strings, append them together (known as "concatenation") and return the result. However, if the concatenation creates a double-char, then omit one of the chars, so "abc" and "cat" yields "abcat".
+        hasBad("badxx") → true	true	OK
+        hasBad("xbadxx") → true	true	OK
+        hasBad("xxbadxx") → false	false	OK
+        hasBad("code") → false	false	OK
+        hasBad("bad") → true	true	OK
+        hasBad("ba") → false	StringIndexOutOfBoundsException: String index out of range: 3 (line:2)	X
+        hasBad("xba") → false	StringIndexOutOfBoundsException: String index out of range: 4 (line:2)	X
+        hasBad("xbad") → true	true	OK
+        hasBad("") → false	StringIndexOutOfBoundsException: String index out of range: 3 (line:2)	X
 
-        conCat("abc", "cat") → "abcat"
-        conCat("dog", "cat") → "dogcat"
-        conCat("abc", "") → "abc"
-
-        public String conCat(String a, String b) {
-
+        public boolean hasBad(String str) {
+        return (str.substring(0, 3).equals("bad") || str.substring(1, 4).equals("bad"));
         }
     */
 
@@ -75,6 +65,27 @@ public class StringOne {
 
         }
 
+        withoutX("xHix") → "Hi"	"Hi"	OK
+        withoutX("xHi") → "Hi"	"Hi"	OK
+        withoutX("Hxix") → "Hxi"	"Hxi"	OK
+        withoutX("Hi") → "Hi"	"Hi"	OK
+        withoutX("xxHi") → "xHi"	"xHi"	OK
+        withoutX("Hix") → "Hi"	"Hi"	OK
+        withoutX("xaxbx") → "axb"	"axb"	OK
+        withoutX("xx") → ""	""	OK
+        withoutX("x") → ""	StringIndexOutOfBoundsException: String index out of range: -1 (line:3)	X
+        withoutX("") → ""	StringIndexOutOfBoundsException: String index out of range: 0 (line:2)	X
+
+        public String withoutX(String str) {
+        if (str.charAt(0) == 'x' && str.charAt(str.length()-1) == 'x') {
+            return str.substring(1, str.length()-1);
+        } else if (str.charAt(0) == 'x') {
+            return str.substring(1, str.length());
+        } else if (str.charAt(str.length()-1) == 'x') {
+            return str.substring(0, str.length()-1);
+        }
+        return str;
+}
     */
 
     /*
@@ -132,6 +143,39 @@ public class StringOne {
         TODO:
 
     */
+
+    /*
+        Given two strings, append them together (known as "concatenation") and return the result.
+        However, if the concatenation creates a double-char, then omit one of the chars, so "abc" and "cat" yields "abcat".
+
+        conCat("abc", "cat") → "abcat"
+        conCat("dog", "cat") → "dogcat"
+        conCat("abc", "") → "abc"
+    */
+
+    public String conCat(String a, String b) {
+        if (a.length() == 0 || b.length() == 0) {
+            return a + b;
+        } else if (a.charAt(a.length()-1) == b.charAt(0)) {
+            return a.substring(0, a.length()-1) + b;
+        } else {
+            return a + b;
+        }
+    }
+
+    /*
+        Given a string and an int n, return a string made of the first and last n chars from the string. The string length will be at least n.
+
+        nTwice("Hello", 2) → "Helo"
+        nTwice("Chocolate", 3) → "Choate"
+        nTwice("Chocolate", 1) → "Ce"
+
+    */
+
+    public String nTwice(String str, int n) {
+        String result = str.substring(0, n) + str.substring(str.length()-n, str.length());
+        return result;
+    }
 
     /*
         Given a string, if the string begins with "red" or "blue" return that color string, otherwise return the empty string.
