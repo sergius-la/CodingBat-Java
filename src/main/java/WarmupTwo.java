@@ -1,3 +1,6 @@
+import org.testng.annotations.Test;
+
+import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
@@ -7,7 +10,27 @@ import java.util.Arrays;
 public class WarmupTwo {
 
     /*
-        TODO: Given a string, return the count of the number of times that a substring length 2 appears in the string and also
+        Given an array of ints, return true if it contains a 2, 7, 1 pattern: a value, followed by the value plus 5,
+        followed by the value minus 1. Additionally the 271 counts even if the "1" differs by 2 or less from the correct value.
+
+        has271([1, 2, 7, 1]) → true
+        has271([1, 2, 8, 1]) → false
+        has271([2, 7, 1]) → true
+        has271([2, 7, 4]) → false
+    */
+
+    public boolean has271(int[] nums) {
+        for (int i=0; i < (nums.length-2); i++) {
+            int val = nums[i];
+            if (nums[i+1] == (val+5) && Math.abs(nums[i+2] - (val-1)) <= 2) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /*
+        Given a string, return the count of the number of times that a substring length 2 appears in the string and also
         as the last 2 chars of the string, so "hixxxhi" yields 1 (we won't count the end substring).
 
         last2("hixxhi") → 1
@@ -19,18 +42,29 @@ public class WarmupTwo {
         }
     */
 
-    /*
-        TODO: Given an array of ints, return true if it contains a 2, 7, 1 pattern: a value, followed by the value plus 5,
-        followed by the value minus 1. Additionally the 271 counts even if the "1" differs by 2 or less from the correct value.
-
-        has271([1, 2, 7, 1]) → true
-        has271([1, 2, 8, 1]) → false
-        has271([2, 7, 1]) → true
-
-        public boolean has271(int[] nums) {
-
+    public int last2(String str) {
+        if (str.length() < 2) {
+            return 0;
         }
-    */
+
+        String check = str.substring(str.length()-2, str.length());
+        int result = findWord(str.substring(0, str.length()-1), check).size();
+        return result;
+    }
+
+    private ArrayList<String> findWord(String in, String word) {
+        ArrayList<String> result = new ArrayList<>();
+        int wordLength = word.length();
+
+        for (int i = 0; i < in.length(); i++) {
+            if (i + wordLength <= in.length()) {
+                if (in.substring(i, wordLength + i).equals(word)) {
+                    result.add(word);
+                }
+            }
+        }
+        return result;
+    }
 
     /*
         Count the number of "xx" in the given string. We'll say that overlapping is allowed, so "xxx" contains 2 "xx".
