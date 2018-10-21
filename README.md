@@ -1,15 +1,19 @@
 # CodingBat-Java
 CodingBat is a free site of live coding problems to build coding skill in Java and Python. CodingBat is a project by Nick Parlante, a computer science lecturer at Stanford. https://codingbat.com
 
-### Warmup-1
- Simple warmup problems to get started - [link](https://github.com/sergius-la/CodingBat-Java/blob/master/src/main/java/WarmupOne.java)
+___
 
- ### Warmup-2
- (todo) Medium warmup string/array loops - [link](https://github.com/sergius-la/CodingBat-Java/blob/master/src/main/java/WarmupTwo.java)
+> [Warmup-1](https://github.com/sergius-la/CodingBat-Java/blob/master/src/main/java/WarmupOne.java)
+ Simple warmup problems to get started
 
-  ### String-1
- (todo) Basic string problems -- no loops. Use + to combine Strings, str.length() is the number of chars in a String, str.substring(i, j) extracts the substring starting at index i and running up to but not including index j. - [link](https://github.com/sergius-la/CodingBat-Java/blob/master/src/main/java/StringOne.java)
+> [Warmup-2](https://github.com/sergius-la/CodingBat-Java/blob/master/src/main/java/WarmupTwo.java)
+ Medium warmup string/array loops
 
+ ___
+
+> (todo) [String-1](https://github.com/sergius-la/CodingBat-Java/blob/master/src/main/java/StringOne.java)
+  Basic string problems -- no loops. Use + to combine Strings, str.length() is the number of chars in a String, str.substring(i, j) extracts the substring starting at index i and running up to but not including index j.
+ 
  ### String-2
  (todo) [link](https://codingbat.com/java/String-2)
 
