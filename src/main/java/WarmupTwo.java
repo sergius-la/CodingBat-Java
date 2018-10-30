@@ -1,5 +1,3 @@
-import org.testng.annotations.Test;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -97,12 +95,9 @@ public class WarmupTwo {
     */
 
     public String stringX(String str) {
-
         char[] check = str.toCharArray();
         String result = "";
-
         for (int i = 0; i < check.length; i++) {
-
             if (check[i] != 'x' || (check[0] == 'x' && i == 0) || (check[check.length - 1] == 'x' && i == check.length - 1)) {
                 result += check[i];
             }

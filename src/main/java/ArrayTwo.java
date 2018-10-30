@@ -21,7 +21,35 @@ public class ArrayTwo {
         notAlone([1, 2, 3], 2) → [1, 3, 3]
         notAlone([1, 2, 3, 2, 5, 2], 2) → [1, 3, 3, 5, 5, 2]
         notAlone([3, 4], 3) → [3, 4]
+
+        public int[] notAlone(int[] nums, int val) {
+        int[] result = new int[nums.length];
+        int lastIndex = nums.length-1;
+        if (nums.length < 3) {
+            return nums;
+        }
+        for (int i = 0; i < lastIndex; i++) {
+            if (nums[i] == val) {
+                int maxBorder = Math.max(nums[i-1], nums[i+1]);
+                result[i] = (nums[i] < maxBorder) ? maxBorder : result[i];
+            } else {
+                result[i] = nums[i];
+            }
+        }
+        result[lastIndex] = nums[lastIndex];
+        return result;
+    }
+
+    notAlone([1, 3, 1, 2], 1) → [1, 3, 3, 2]	ArrayIndexOutOfBoundsException: -1 (line:9)	X
+    notAlone([3], 3) → [3]	[3]	OK
+    notAlone([], 3) → []	[]	OK
+    notAlone([7, 1, 6], 1) → [7, 7, 6]	[7, 7, 6]	OK
+    notAlone([1, 1, 1], 1) → [1, 1, 1]	ArrayIndexOutOfBoundsException: -1 (line:9)	X
+    notAlone([1, 1, 1, 2], 1) → [1, 1, 1, 2]	ArrayIndexOutOfBoundsException: -1 (line:9)	X
+
     */
+
+
 
     /*
         TODO: Return the "centered" average of an array of ints, which we'll say is the mean average of the values, except ignoring the largest and smallest values in the array. If there are multiple copies of the smallest value, ignore just one copy, and likewise for the largest value. Use int division to produce the final average. You may assume that the array is length 3 or more.
@@ -45,6 +73,37 @@ public class ArrayTwo {
         zeroMax([0, 5, 0, 3]) → [5, 5, 3, 3]
         zeroMax([0, 4, 0, 3]) → [3, 4, 3, 3]
         zeroMax([0, 1, 0]) → [1, 1, 0]
+
+        zeroMax([0, 5, 0, 3]) → [5, 5, 3, 3]	[5, 5, 3, 3]	OK
+        zeroMax([0, 4, 0, 3]) → [3, 4, 3, 3]	[3, 4, 3, 3]	OK
+        zeroMax([0, 1, 0]) → [1, 1, 0]	[1, 1, 0]	OK
+        zeroMax([0, 1, 5]) → [5, 1, 5]	[1, 1, 5]	X
+        zeroMax([0, 2, 0]) → [0, 2, 0]	[1, 2, 0]	X
+        zeroMax([1]) → [1]	[1]	OK
+        zeroMax([0]) → [0]	[0]	OK
+        zeroMax([]) → []	[]	OK
+        zeroMax([7, 0, 4, 3, 0, 2]) → [7, 3, 4, 3, 0, 2]	[0, 0, 3, 3, 1, 2]	X
+        zeroMax([7, 0, 4, 3, 0, 1]) → [7, 3, 4, 3, 1, 1]	[0, 0, 3, 3, 1, 1]	X
+        zeroMax([7, 0, 4, 3, 0, 0]) → [7, 3, 4, 3, 0, 0]	[0, 0, 3, 3, 0, 0]	X
+        zeroMax([7, 0, 1, 0, 0, 7]) → [7, 7, 1, 7, 7, 7]	[0, 0, 0, 0, 7, 7]	X
+
+
+        public int[] zeroMax(int[] nums) {
+        int lastIndex = nums.length-1;
+
+        for (int i = 0; i < lastIndex; i += 2) {
+            nums[i] = largerOdd(nums[i+1]);
+        }
+        return nums;
+    }
+
+    private int largerOdd(int num) {
+        if (num %2 == 0) {
+            return (num == 0) ? 0 : num-1;
+        } else {
+            return num;
+        }
+}
     */
 
     /*

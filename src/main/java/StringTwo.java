@@ -1,6 +1,7 @@
 
 import org.testng.annotations.Test;
 
+import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -14,6 +15,30 @@ public class StringTwo {
     public void test() {
 
     }
+
+    /*
+        TODO: Given a string, does "xyz" appear in the middle of the string? To define middle, we'll say that the number of chars to the left and right of the "xyz" must differ by at most one. This problem is harder than it looks.
+
+        xyzMiddle("AAxyzBB") → true
+        xyzMiddle("AxyzBB") → true
+        xyzMiddle("AxyzBBB") → false
+
+        xyzMiddle("AAxyzBB") → true	true	OK
+        xyzMiddle("AxyzBB") → true	false	X
+        xyzMiddle("xyzxyzxyzBxyzxyz") → true	false	X
+        xyzMiddle("xyzxyzAxyzxyzxyz") → true	true	OK
+        xyzMiddle("xyzz") → true	false	X
+
+        public boolean xyzMiddle(String str) {
+        if (str.length() < 3) {
+            return false;
+        }
+        String check = str.substring(str.length() / 2 - 1, str.length() / 2 + 2);
+        return check.equals("xyz");
+        }
+    */
+
+
 
     /*
     TODO: Given a string, consider the prefix string made of the first N chars of the string. Does that prefix string appear somewhere else in the string? Assume that the string is not empty and that N is in the range 1..str.length().
@@ -45,9 +70,9 @@ public class StringTwo {
         TODO: Return a version of the given string, where for every star (*) in the string the star and the chars immediately to its left and right are gone. So "ab*cd" yields "ad" and "ab**cd" also yields "ad".
 
 
-starOut("ab*cd") → "ad"
-starOut("ab**cd") → "ad"
-starOut("sm*eilly") → "silly"
+        starOut("ab*cd") → "ad"
+        starOut("ab**cd") → "ad"
+        starOut("sm*eilly") → "silly"
 
     */
 
@@ -55,65 +80,112 @@ starOut("sm*eilly") → "silly"
         TODO: We'll say that a String is xy-balanced if for all the 'x' chars in the string, there exists a 'y' char somewhere later in the string. So "xxy" is balanced, but "xyx" is not. One 'y' can balance multiple 'x's. Return true if the given string is xy-balanced.
 
 
-xyBalance("aaxbby") → true
-xyBalance("aaxbb") → false
-xyBalance("yaaxbb") → false
-    */
-
-    /*
-        TODO: Given a string, does "xyz" appear in the middle of the string? To define middle, we'll say that the number of chars to the left and right of the "xyz" must differ by at most one. This problem is harder than it looks.
-
-
-xyzMiddle("AAxyzBB") → true
-xyzMiddle("AxyzBB") → true
-xyzMiddle("AxyzBBB") → false
-
+        xyBalance("aaxbby") → true
+        xyBalance("aaxbb") → false
+        xyBalance("yaaxbb") → false
     */
 
     /*
         TODO: Given a string, compute a new string by moving the first char to come after the next two chars, so "abc" yields "bca". Repeat this process for each subsequent group of 3 chars, so "abcdef" yields "bcaefd". Ignore any group of fewer than 3 chars at the end.
 
 
-oneTwo("abc") → "bca"
-oneTwo("tca") → "cat"
-oneTwo("tcagdo") → "catdog"
+        oneTwo("abc") → "bca"
+        oneTwo("tca") → "cat"
+        oneTwo("tcagdo") → "catdog"
     */
 
     /*
         TODO: Given a string and a non-empty word string, return a version of the original String where all chars have been replaced by pluses ("+"), except for appearances of the word string which are preserved unchanged.
 
 
-plusOut("12xy34", "xy") → "++xy++"
-plusOut("12xy34", "1") → "1+++++"
-plusOut("12xy34xyabcxy", "xy") → "++xy++xy+++xy"
-    */
+        plusOut("12xy34", "xy") → "++xy++"
+        plusOut("12xy34", "1") → "1+++++"
+        plusOut("12xy34xyabcxy", "xy") → "++xy++xy+++xy"
 
-    /*
-        TODO: Return true if the string "cat" and "dog" appear the same number of times in the given string.
+        public String plusOut(String str, String target) {
+        char[] result = new char[str.length()];
+        int targetLength = target.length();
 
+        for (int i = 0; i < str.length(); i++) {
 
-catDog("catdog") → true
-catDog("catcat") → false
-catDog("1cat1cadodog") → true
+        }
+        return result.toString();
+
+        }
     */
 
     /*
         TODO: Return true if the given string contains an appearance of "xyz" where the xyz is not directly preceeded by a period (.). So "xxyz" counts but "x.xyz" does not.
 
+        xyzThere("abcxyz") → true
+        xyzThere("abc.xyz") → false
+        xyzThere("xyz.abc") → true
 
-xyzThere("abcxyz") → true
-xyzThere("abc.xyz") → false
-xyzThere("xyz.abc") → true
+        xyzThere("abcxyz") → true	true	OK
+        xyzThere("abc.xyz") → false	false	OK
+        xyzThere("xyz.abc") → true	true	OK
+        xyzThere("abcxy") → false	false	OK
+        xyzThere("xyz") → true	true	OK
+        xyzThere("xy") → false	false	OK
+        xyzThere("x") → false	false	OK
+        xyzThere("") → false	false	OK
+        xyzThere("abc.xyzxyz") → true	false	X
+        xyzThere("abc.xxyz") → true	false	X
+        xyzThere(".xyz") → false	false	OK
+        xyzThere("12.xyz") → false	false	OK
+        xyzThere("12xyz") → true	true	OK
+        xyzThere("1.xyz.xyz2.xyz") → false	true	X
+
+
+        public boolean xyzThere(String str) {
+        if (str.contains(".")) {
+            return (str.contains("xyz."));
+        } else {
+            return (str.contains("xyz"));
+        }
+        }
     */
 
     /*
         TODO: Given two strings, a and b, create a bigger string made of the first char of a, the first char of b, the second char of a, the second char of b, and so on. Any leftover chars go at the end of the result.
 
+        mixString("abc", "xyz") → "axbycz"
+        mixString("Hi", "There") → "HTihere"
+        mixString("xxxx", "There") → "xTxhxexre"
 
-mixString("abc", "xyz") → "axbycz"
-mixString("Hi", "There") → "HTihere"
-mixString("xxxx", "There") → "xTxhxexre"
+        public String mixString(String a, String b) {
+
+        }
     */
+
+    /*
+        Return true if the string "cat" and "dog" appear the same number of times in the given string.
+
+        catDog("catdog") → true
+        catDog("catcat") → false
+        catDog("1cat1cadodog") → true
+    */
+
+    public boolean catDog(String str) {
+        int cat = findWord(str, "cat").size();
+        int dog = findWord(str, "dog").size();
+
+        return (cat == dog);
+    }
+
+    private ArrayList<String> findWord(String in, String word) {
+        ArrayList<String> result = new ArrayList<>();
+        int wordLength = word.length();
+
+        for (int i = 0; i < in.length(); i++) {
+            if (i + wordLength <= in.length()) {
+                if (in.substring(i, wordLength + i).equals(word)) {
+                    result.add(word);
+                }
+            }
+        }
+        return result;
+    }
 
     /*
         Given a string and an int n, return a string made of the first n characters of the string,

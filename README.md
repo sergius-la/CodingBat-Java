@@ -2,14 +2,13 @@
 
 > CodingBat is a free site of live coding problems to build coding skill in Java and Python. CodingBat is a project by Nick Parlante, a computer science lecturer at Stanford. https://codingbat.com
 
-___
-
 * [Warmup-1](https://github.com/sergius-la/CodingBat-Java/blob/master/src/main/java/WarmupOne.java) - Simple warmup problems to get started.
+
 * [Warmup-2](https://github.com/sergius-la/CodingBat-Java/blob/master/src/main/java/WarmupTwo.java) - Medium warmup string/array loops.
 
 * [String-1](https://github.com/sergius-la/CodingBat-Java/blob/master/src/main/java/StringOne.java) (todo) - Basic string problems -- no loops. Use + to combine Strings, str.length() is the number of chars in a String, str.substring(i, j) extracts the substring starting at index i and running up to but not including index j.
 
-* [String-2](https://codingbat.com/java/String-2) (todo) 
+* [String-2](https://github.com/sergius-la/CodingBat-Java/blob/master/src/main/java/StringTwo.java) (todo) 
 
 * [Map-1](https://github.com/sergius-la/CodingBat-Java/blob/master/src/main/java/MapOne.java) - Basic Map get()/put(), no loops. These can be solved with just get(), put(), and containsKey().
 

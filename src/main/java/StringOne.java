@@ -18,32 +18,6 @@ public class StringOne {
     */
 
     /*
-        TODO: Given a string, return true if "bad" appears starting at index 0 or 1 in the string, such as with "badxxx" or "xbadxx" but not "xxbadxx". The string may be any length, including 0. Note: use .equals() to compare 2 strings.
-
-        hasBad("badxx") → true
-        hasBad("xbadxx") → true
-        hasBad("xxbadxx") → false
-
-        public boolean hasBad(String str) {
-
-        }
-
-        hasBad("badxx") → true	true	OK
-        hasBad("xbadxx") → true	true	OK
-        hasBad("xxbadxx") → false	false	OK
-        hasBad("code") → false	false	OK
-        hasBad("bad") → true	true	OK
-        hasBad("ba") → false	StringIndexOutOfBoundsException: String index out of range: 3 (line:2)	X
-        hasBad("xba") → false	StringIndexOutOfBoundsException: String index out of range: 4 (line:2)	X
-        hasBad("xbad") → true	true	OK
-        hasBad("") → false	StringIndexOutOfBoundsException: String index out of range: 3 (line:2)	X
-
-        public boolean hasBad(String str) {
-        return (str.substring(0, 3).equals("bad") || str.substring(1, 4).equals("bad"));
-        }
-    */
-
-    /*
         TODO: Given a string, if a length 2 substring appears at both its beginning and end, return a string without the substring at the beginning, so "HelloHe" yields "lloHe". The substring may overlap with itself, so "Hi" yields "". Otherwise, return the original string unchanged.
 
         without2("HelloHe") → "lloHe"
@@ -136,14 +110,24 @@ public class StringOne {
     */
 
     /*
-        TODO:
+        Given a string, return true if "bad" appears starting at index 0 or 1 in the string, such as with "badxxx" or "xbadxx" but not "xxbadxx".
+        The string may be any length, including 0. Note: use .equals() to compare 2 strings.
+
+        hasBad("badxx") → true
+        hasBad("xbadxx") → true
+        hasBad("xxbadxx") → false
 
     */
 
-    /*
-        TODO:
-
-    */
+    public boolean hasBad(String str) {
+        if (str.length() < 3) {
+            return false;
+        } else if (str.length() == 3) {
+            return str.substring(0, 3).equals("bad");
+        } else {
+            return (str.substring(0, 3).equals("bad") || str.substring(1, 4).equals("bad"));
+        }
+    }
 
     /*
         Given two strings, append them together (known as "concatenation") and return the result.
