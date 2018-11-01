@@ -1,19 +1,8 @@
-import org.testng.annotations.Test;
-
-import java.util.Arrays;
-
 /**
  *  CodingBat: Array-2
- *  https://codingbat.com/java/Array-1
+ *  https://codingbat.com/java/Array-2
  */
 public class ArrayTwo {
-
-    @Test
-    public void check() {
-        int[] one = {0, 2};
-        int[] two = {};
-        System.out.println(Arrays.toString(tenRun(one)));
-    }
 
     /*
         TODO: We'll say that an element in an array is "alone" if there are values before and after it, and those values are different from it. Return a version of the given array where every instance of the given value which is alone is replaced by whichever value to its left or right is larger.
@@ -59,52 +48,65 @@ public class ArrayTwo {
         centeredAverage([-10, -4, -2, -4, -2, 0]) → -3
     */
 
-    /*
-        TODO: Return an array that contains the exact same numbers as the given array, but rearranged so that all the even numbers come before all the odd numbers. Other than that, the numbers can be in any order. You may modify and return the given array, or make a new array.
+     /*
+        Return an array that contains the exact same numbers as the given array, but rearranged so that all the even numbers
+        come before all the odd numbers. Other than that, the numbers can be in any order. You may modify and return the given array,
+        or make a new array.
 
         evenOdd([1, 0, 1, 0, 0, 1, 1]) → [0, 0, 0, 1, 1, 1, 1]
         evenOdd([3, 3, 2]) → [2, 3, 3]
         evenOdd([2, 2, 2]) → [2, 2, 2]
     */
 
+    public int[] evenOdd(int[] nums) {
+        int[] result = new int[nums.length];
+        int index = 0;
+
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] %2 == 0) {
+                result[index] = nums[i];
+                index ++;
+            }
+        }
+
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] %2 != 0) {
+                result[index] = nums[i];
+                index ++;
+            }
+        }
+
+        return result;
+    }
+
     /*
-        TODO: Return a version of the given array where each zero value in the array is replaced by the largest odd value to the right of the zero in the array. If there is no odd value to the right of the zero, leave the zero as a zero.
+        Return a version of the given array where each zero value in the array is replaced by the largest odd value to the right of the zero in the array.
+        If there is no odd value to the right of the zero, leave the zero as a zero.
 
         zeroMax([0, 5, 0, 3]) → [5, 5, 3, 3]
         zeroMax([0, 4, 0, 3]) → [3, 4, 3, 3]
         zeroMax([0, 1, 0]) → [1, 1, 0]
 
-        zeroMax([0, 5, 0, 3]) → [5, 5, 3, 3]	[5, 5, 3, 3]	OK
-        zeroMax([0, 4, 0, 3]) → [3, 4, 3, 3]	[3, 4, 3, 3]	OK
-        zeroMax([0, 1, 0]) → [1, 1, 0]	[1, 1, 0]	OK
-        zeroMax([0, 1, 5]) → [5, 1, 5]	[1, 1, 5]	X
-        zeroMax([0, 2, 0]) → [0, 2, 0]	[1, 2, 0]	X
-        zeroMax([1]) → [1]	[1]	OK
-        zeroMax([0]) → [0]	[0]	OK
-        zeroMax([]) → []	[]	OK
-        zeroMax([7, 0, 4, 3, 0, 2]) → [7, 3, 4, 3, 0, 2]	[0, 0, 3, 3, 1, 2]	X
-        zeroMax([7, 0, 4, 3, 0, 1]) → [7, 3, 4, 3, 1, 1]	[0, 0, 3, 3, 1, 1]	X
-        zeroMax([7, 0, 4, 3, 0, 0]) → [7, 3, 4, 3, 0, 0]	[0, 0, 3, 3, 0, 0]	X
-        zeroMax([7, 0, 1, 0, 0, 7]) → [7, 7, 1, 7, 7, 7]	[0, 0, 0, 0, 7, 7]	X
+    */
 
-
-        public int[] zeroMax(int[] nums) {
-        int lastIndex = nums.length-1;
-
-        for (int i = 0; i < lastIndex; i += 2) {
-            nums[i] = largerOdd(nums[i+1]);
+    public int[] zeroMax(int[] nums) {
+        for (int i = 0; i < nums.length; i += 1) {
+            if (nums[i] == 0) {
+                nums[i] = (largeLeftOdd(nums, i) != -1) ? largeLeftOdd(nums, i) : 0;
+            }
         }
         return nums;
     }
 
-    private int largerOdd(int num) {
-        if (num %2 == 0) {
-            return (num == 0) ? 0 : num-1;
-        } else {
-            return num;
+    private int largeLeftOdd(int[] nums, int index) {
+        int largeOdd = -1;
+        for (int i = index; i < nums.length; i++) {
+            if (nums[i] %2 != 0 && nums[i] > largeOdd) {
+                largeOdd = nums[i];
+            }
         }
-}
-    */
+        return (largeOdd == -1) ? -1 : largeOdd;
+    }
 
     /*
         Return an array that contains the exact same numbers as the given array, but rearranged so that all the zeros are grouped at the start of the array.
