@@ -12,7 +12,7 @@
 
 * [Map-1](https://github.com/sergius-la/CodingBat-Java/blob/master/src/main/java/MapOne.java) - Basic Map get()/put(), no loops. These can be solved with just get(), put(), and containsKey().
 
-* [Map-2](https://codingbat.com/java/Map-2) (todo) -  Maps with bulk data and loops.
+* [Map-2](https://github.com/sergius-la/CodingBat-Java/blob/master/src/main/java/MapTwo.java) (todo) -  Maps with bulk data and loops.
 
 * [Array-1](https://github.com/sergius-la/CodingBat-Java/blob/master/src/main/java/ArrayOne.java) - Basic array problems -- no loops.. Use a[0], a[1], ... to access elements in an array, a.length is the length.
 

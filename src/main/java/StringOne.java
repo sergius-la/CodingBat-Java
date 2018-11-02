@@ -13,8 +13,40 @@ public class StringOne {
         startWord("hippo", "i") → "h"
 
         public String startWord(String str, String word) {
-
+        if (word.length() == 1) {
+            if (str.charAt(1) == word.charAt(0)) {
+                return word;
+            } else {
+                return "";
+            }
         }
+        String result = String.valueOf(str.charAt(0));
+        for (int i = 1, j = 1; j < word.length(); i++, j++) {
+            if (str.charAt(i) == word.charAt(j)) {
+                result += String.valueOf(word.charAt(j));
+            } else {
+                return "";
+            }
+        }
+        return result;
+        }
+
+        startWord("hippo", "hi") → "hi"	"hi"	OK
+        startWord("hippo", "xip") → "hip"	"hip"	OK
+        startWord("hippo", "i") → "h"	"i"	X
+        startWord("hippo", "ix") → ""	""	OK
+        startWord("h", "ix") → ""	StringIndexOutOfBoundsException: String index out of range: 1 (line:11)	X
+        startWord("", "i") → ""	StringIndexOutOfBoundsException: String index out of range: 1 (line:3)	X
+        startWord("hip", "zi") → "hi"	"hi"	OK
+        startWord("hip", "zip") → "hip"	"hip"	OK
+        startWord("hip", "zig") → ""	""	OK
+        startWord("h", "z") → "h"	StringIndexOutOfBoundsException: String index out of range: 1 (line:3)	X
+        startWord("hippo", "xippo") → "hippo"	"hippo"	OK
+        startWord("hippo", "xyz") → ""	""	OK
+        startWord("hippo", "hip") → "hip"	"hip"	OK
+        startWord("kitten", "cit") → "kit"	"kit"	OK
+        startWord("kit", "cit") → "kit"	"kit"	OK
+
     */
 
     /*
@@ -25,8 +57,30 @@ public class StringOne {
         without2("Hi") → ""
 
         public String without2(String str) {
-
+        if (str.length() == 2) {
+            return "";
         }
+
+        if (str.length() > 3) {
+            if (str.substring(0, 2).equals(str.substring(str.length()-2, str.length()))) {
+                return str.substring(2, str.length());
+            } else {
+                return str;
+            }
+        }
+        return str;
+        }
+
+        without2("HelloHe") → "lloHe"	"lloHe"	OK
+        without2("HelloHi") → "HelloHi"	"HelloHi"	OK
+        without2("Hi") → ""	""	OK
+        without2("Chocolate") → "Chocolate"	"Chocolate"	OK
+        without2("xxx") → "x"	"xxx"	X
+        without2("xx") → ""	""	OK
+        without2("x") → "x"	"x"	OK
+        without2("") → ""	""	OK
+        without2("Fruits") → "Fruits"	"Fruits"	OK
+
     */
 
     /*
@@ -50,29 +104,28 @@ public class StringOne {
         withoutX("xx") → ""	""	OK
         withoutX("x") → ""	StringIndexOutOfBoundsException: String index out of range: -1 (line:3)	X
         withoutX("") → ""	StringIndexOutOfBoundsException: String index out of range: 0 (line:2)	X
+        withoutX("xx") → ""	StringIndexOutOfBoundsException: String index out of range: -1 (line:12)	X
 
         public String withoutX(String str) {
-        if (str.charAt(0) == 'x' && str.charAt(str.length()-1) == 'x') {
-            return str.substring(1, str.length()-1);
-        } else if (str.charAt(0) == 'x') {
-            return str.substring(1, str.length());
-        } else if (str.charAt(str.length()-1) == 'x') {
-            return str.substring(0, str.length()-1);
+        if (str.length() == 1) {
+            if (str.charAt(0) == 'x') {
+                return "";
+            } else {
+                return str;
+            }
         }
-        return str;
-}
-    */
 
-    /*
-        TODO: Given a string, return a "rotated right 2" version where the last 2 chars are moved to the start. The string length will be at least 2.
+        StringBuilder result = new StringBuilder(str);
+        for (int i = 0; i < result.length(); i += result.length()-1) {
+            if (result.charAt(i) == 'x') {
+                result.deleteCharAt(i);
+            }
+        }
+        return result.toString();
+        }
+        }
 
-        right2("Hello") → "loHel"
-        right2("java") → "vaja"
-        right2("Hi") → "Hi"
 
-        public String right2(String str) {
-
-         }
     */
 
     /*
@@ -82,32 +135,83 @@ public class StringOne {
         twoChar("java", 2) → "va"
         twoChar("java", 3) → "ja"
 
+        public String twoChar(String str, int index) {
+        if ((index + 2) <= str.length()) {
+            return str.substring(index, index + 2);
+        } else {
+            return str.substring(0, 2);
+        }
+        }
+
+        twoChar("java", 0) → "ja"	"ja"	OK
+        twoChar("java", 2) → "va"	"va"	OK
+        twoChar("java", 3) → "ja"	"ja"	OK
+        twoChar("java", 4) → "ja"	"ja"	OK
+        twoChar("java", -1) → "ja"	StringIndexOutOfBoundsException: String index out of range: -1 (line:3)	X
+        twoChar("Hello", 0) → "He"	"He"	OK
+        twoChar("Hello", 1) → "el"	"el"	OK
+        twoChar("Hello", 99) → "He"	"He"	OK
+        twoChar("Hello", 3) → "lo"	"lo"	OK
+        twoChar("Hello", 4) → "He"	"He"	OK
+        twoChar("Hello", 5) → "He"	"He"	OK
+        twoChar("Hello", -7) → "He"	StringIndexOutOfBoundsException: String index out of range: -7 (line:3)	X
+        twoChar("Hello", 6) → "He"	"He"	OK
+        twoChar("Hello", -1) → "He"	StringIndexOutOfBoundsException: String index out of range: -1 (line:3)	X
+        twoChar("yay", 0) → "ya"	"ya"	OK
+
     */
 
     /*
-        TODO: Given a string of any length, return a new string where the last 2 chars, if present, are swapped, so "coding" yields "codign".
+        Given a string, return a "rotated right 2" version where the last 2 chars are moved to the start. The string length will be at least 2.
+
+        right2("Hello") → "loHel"
+        right2("java") → "vaja"
+        right2("Hi") → "Hi"
+    */
+
+    public String right2(String str) {
+        if (str.length() > 2) {
+            return str.substring(str.length()-2, str.length()) + str.substring(0, str.length()-2);
+        } else {
+            return str;
+        }
+    }
+
+    /*
+        Given a string of any length, return a new string where the last 2 chars, if present, are swapped, so "coding" yields "codign".
 
         lastTwo("coding") → "codign"
         lastTwo("cat") → "cta"
         lastTwo("ab") → "ba"
 
-        public String lastTwo(String str) {
-
-        }
     */
 
-    /*
-        TODO: Given two strings, append them together (known as "concatenation") and return the result. However, if the strings are different lengths, omit chars from the longer string so it is the same length as the shorter string. So "Hello" and "Hi" yield "loHi". The strings may be any length.
+    public String lastTwo(String str) {
+        if (str.length() < 2) {
+            return str;
+        }
+        if (str.length() == 2) {
+            return String.valueOf(str.charAt(str.length()-1)) + String.valueOf(str.charAt(str.length()-2));
+        }
+        return String.valueOf(str.substring(0, str.length()-2) + str.charAt(str.length()-1) + str.charAt(str.length()-2));
+    }
+
+     /*
+        Given two strings, append them together (known as "concatenation") and return the result. However, if the strings are different lengths,
+        omit chars from the longer string so it is the same length as the shorter string. So "Hello" and "Hi" yield "loHi". The strings may be any length.
 
         minCat("Hello", "Hi") → "loHi"
         minCat("Hello", "java") → "ellojava"
         minCat("java", "Hello") → "javaello"
 
-        public String minCat(String a, String b) {
-
-        }
-
     */
+
+    public String minCat(String a, String b) {
+        int aLen = a.length();
+        int bLen = b.length();
+
+        return (aLen > bLen) ? a.substring(aLen - bLen, aLen) + b : (bLen > aLen) ? a + b.substring(bLen - aLen, bLen) : a + b;
+    }
 
     /*
         Given a string, return true if "bad" appears starting at index 0 or 1 in the string, such as with "badxxx" or "xbadxx" but not "xxbadxx".
