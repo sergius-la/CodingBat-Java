@@ -5,40 +5,28 @@
 public class ArrayTwo {
 
     /*
-        TODO: We'll say that an element in an array is "alone" if there are values before and after it, and those values are different from it. Return a version of the given array where every instance of the given value which is alone is replaced by whichever value to its left or right is larger.
+        We'll say that an element in an array is "alone" if there are values before and after it, and those values are different from it.
+        Return a version of the given array where every instance of the given value which is alone is replaced by whichever value to its left or right is larger.
 
         notAlone([1, 2, 3], 2) → [1, 3, 3]
         notAlone([1, 2, 3, 2, 5, 2], 2) → [1, 3, 3, 5, 5, 2]
         notAlone([3, 4], 3) → [3, 4]
 
-        public int[] notAlone(int[] nums, int val) {
-        int[] result = new int[nums.length];
+    */
+
+    public int[] notAlone(int[] nums, int val) {
         int lastIndex = nums.length-1;
         if (nums.length < 3) {
             return nums;
         }
-        for (int i = 0; i < lastIndex; i++) {
-            if (nums[i] == val) {
+        for (int i = 1; i < lastIndex; i++) {
+            if (nums[i] == val && nums[i-1] != val && nums[i+1] != val) {
                 int maxBorder = Math.max(nums[i-1], nums[i+1]);
-                result[i] = (nums[i] < maxBorder) ? maxBorder : result[i];
-            } else {
-                result[i] = nums[i];
+                nums[i] = (nums[i] < maxBorder) ? maxBorder : nums[i];
             }
         }
-        result[lastIndex] = nums[lastIndex];
-        return result;
+        return nums;
     }
-
-    notAlone([1, 3, 1, 2], 1) → [1, 3, 3, 2]	ArrayIndexOutOfBoundsException: -1 (line:9)	X
-    notAlone([3], 3) → [3]	[3]	OK
-    notAlone([], 3) → []	[]	OK
-    notAlone([7, 1, 6], 1) → [7, 7, 6]	[7, 7, 6]	OK
-    notAlone([1, 1, 1], 1) → [1, 1, 1]	ArrayIndexOutOfBoundsException: -1 (line:9)	X
-    notAlone([1, 1, 1, 2], 1) → [1, 1, 1, 2]	ArrayIndexOutOfBoundsException: -1 (line:9)	X
-
-    */
-
-
 
     /*
         Return the "centered" average of an array of ints, which we'll say is the mean average of the values,

@@ -16,7 +16,7 @@
 
 * [Array-1](https://github.com/sergius-la/CodingBat-Java/blob/master/src/main/java/ArrayOne.java) - Basic array problems -- no loops.. Use a[0], a[1], ... to access elements in an array, a.length is the length.
 
-* [Array-2](https://github.com/sergius-la/CodingBat-Java/blob/master/src/main/java/ArrayTwo.java) - (todo) Medium array problems -- 1 loop.
+* [Array-2](https://github.com/sergius-la/CodingBat-Java/blob/master/src/main/java/ArrayTwo.java) - Medium array problems -- 1 loop.
 
 * [Logic-1](https://github.com/sergius-la/CodingBat-Java/blob/master/src/main/java/LogicOne.java) - (todo: Add Task) Basic boolean logic puzzles.
 
