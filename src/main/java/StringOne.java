@@ -50,85 +50,6 @@ public class StringOne {
     */
 
     /*
-        TODO: Given a string, if a length 2 substring appears at both its beginning and end, return a string without the substring at the beginning, so "HelloHe" yields "lloHe". The substring may overlap with itself, so "Hi" yields "". Otherwise, return the original string unchanged.
-
-        without2("HelloHe") → "lloHe"
-        without2("HelloHi") → "HelloHi"
-        without2("Hi") → ""
-
-        public String without2(String str) {
-        if (str.length() == 2) {
-            return "";
-        }
-
-        if (str.length() > 3) {
-            if (str.substring(0, 2).equals(str.substring(str.length()-2, str.length()))) {
-                return str.substring(2, str.length());
-            } else {
-                return str;
-            }
-        }
-        return str;
-        }
-
-        without2("HelloHe") → "lloHe"	"lloHe"	OK
-        without2("HelloHi") → "HelloHi"	"HelloHi"	OK
-        without2("Hi") → ""	""	OK
-        without2("Chocolate") → "Chocolate"	"Chocolate"	OK
-        without2("xxx") → "x"	"xxx"	X
-        without2("xx") → ""	""	OK
-        without2("x") → "x"	"x"	OK
-        without2("") → ""	""	OK
-        without2("Fruits") → "Fruits"	"Fruits"	OK
-
-    */
-
-    /*
-        TODO: Given a string, if the first or last chars are 'x', return the string without those 'x' chars, and otherwise return the string unchanged.
-
-        withoutX("xHix") → "Hi"
-        withoutX("xHi") → "Hi"
-        withoutX("Hxix") → "Hxi"
-
-        public String withoutX(String str) {
-
-        }
-
-        withoutX("xHix") → "Hi"	"Hi"	OK
-        withoutX("xHi") → "Hi"	"Hi"	OK
-        withoutX("Hxix") → "Hxi"	"Hxi"	OK
-        withoutX("Hi") → "Hi"	"Hi"	OK
-        withoutX("xxHi") → "xHi"	"xHi"	OK
-        withoutX("Hix") → "Hi"	"Hi"	OK
-        withoutX("xaxbx") → "axb"	"axb"	OK
-        withoutX("xx") → ""	""	OK
-        withoutX("x") → ""	StringIndexOutOfBoundsException: String index out of range: -1 (line:3)	X
-        withoutX("") → ""	StringIndexOutOfBoundsException: String index out of range: 0 (line:2)	X
-        withoutX("xx") → ""	StringIndexOutOfBoundsException: String index out of range: -1 (line:12)	X
-
-        public String withoutX(String str) {
-        if (str.length() == 1) {
-            if (str.charAt(0) == 'x') {
-                return "";
-            } else {
-                return str;
-            }
-        }
-
-        StringBuilder result = new StringBuilder(str);
-        for (int i = 0; i < result.length(); i += result.length()-1) {
-            if (result.charAt(i) == 'x') {
-                result.deleteCharAt(i);
-            }
-        }
-        return result.toString();
-        }
-        }
-
-
-    */
-
-    /*
         TODO: Given a string and an index, return a string length 2 starting at the given index. If the index is too big or too small to define a string length 2, use the first 2 chars. The string length will be at least 2.
 
         twoChar("java", 0) → "ja"
@@ -162,6 +83,97 @@ public class StringOne {
     */
 
     /*
+        Given a string, if one or both of the first 2 chars is 'x', return the string without those 'x' chars, and otherwise return the string unchanged. This is a little harder than it looks.
+
+        withoutX2("xHi") → "Hi"
+        withoutX2("Hxi") → "Hi"
+        withoutX2("Hi") → "Hi"
+    */
+
+    public String withoutX2(String str) {
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i < str.length(); i++) {
+            if ((str.charAt(0) == 'x' && i == 0) || (str.charAt(1) == 'x' && i == 1)) {
+
+            } else {
+                result.append(str.charAt(i));
+            }
+        }
+        return result.toString();
+    }
+
+
+    /*
+        Given a string, if the first or last chars are 'x', return the string without those 'x' chars, and otherwise return the string unchanged.
+
+        withoutX("xHix") → "Hi"
+        withoutX("xHi") → "Hi"
+        withoutX("Hxix") → "Hxi"
+
+    */
+
+    public String withoutX(String str) {
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i < str.length(); i++) {
+            if (str.charAt(0) == 'x' && i == 0 || str.charAt(str.length()-1) == 'x' && i == str.length()-1) {
+
+            } else {
+                result.append(str.charAt(i));
+            }
+        }
+        return result.toString();
+    }
+
+
+
+    /*
+        Given a string, return a version without the first 2 chars. Except keep the first char if it is 'a' and keep the second char if it is 'b'.
+        The string may be any length. Harder than it looks.
+
+        deFront("Hello") → "llo"
+        deFront("java") → "va"
+        deFront("away") → "aay"
+    */
+
+    public String deFront(String str) {
+        StringBuilder result = new StringBuilder();
+        result = (str.charAt(0) == 'a') ? result.append('a') : result.append("");
+        result = (str.charAt(1) == 'b') ? result.append('b') : result.append("");
+
+        for (int i = 2; i < str.length(); i++) {
+            result.append(str.charAt(i));
+        }
+
+        return result.toString();
+    }
+
+
+    /*
+        Given a string, if a length 2 substring appears at both its beginning and end, return a string without the substring at the beginning,
+        so "HelloHe" yields "lloHe". The substring may overlap with itself, so "Hi" yields "". Otherwise, return the original string unchanged.
+
+        without2("HelloHe") → "lloHe"
+        without2("HelloHi") → "HelloHi"
+        without2("Hi") → ""
+
+    */
+
+    public String without2(String str) {
+        if (str.length() == 2) {
+            return "";
+        }
+        if (str.length() > 2) {
+            if (str.substring(0, 2).equals(str.substring(str.length()-2, str.length()))) {
+                return str.substring(2, str.length());
+            } else {
+                return str;
+            }
+        }
+        return str;
+    }
+
+
+    /*
         Given a string, return a "rotated right 2" version where the last 2 chars are moved to the start. The string length will be at least 2.
 
         right2("Hello") → "loHel"
@@ -176,6 +188,7 @@ public class StringOne {
             return str;
         }
     }
+
 
     /*
         Given a string of any length, return a new string where the last 2 chars, if present, are swapped, so "coding" yields "codign".
@@ -196,6 +209,7 @@ public class StringOne {
         return String.valueOf(str.substring(0, str.length()-2) + str.charAt(str.length()-1) + str.charAt(str.length()-2));
     }
 
+
      /*
         Given two strings, append them together (known as "concatenation") and return the result. However, if the strings are different lengths,
         omit chars from the longer string so it is the same length as the shorter string. So "Hello" and "Hi" yield "loHi". The strings may be any length.
@@ -212,6 +226,7 @@ public class StringOne {
 
         return (aLen > bLen) ? a.substring(aLen - bLen, aLen) + b : (bLen > aLen) ? a + b.substring(bLen - aLen, bLen) : a + b;
     }
+
 
     /*
         Given a string, return true if "bad" appears starting at index 0 or 1 in the string, such as with "badxxx" or "xbadxx" but not "xxbadxx".
@@ -233,6 +248,7 @@ public class StringOne {
         }
     }
 
+
     /*
         Given two strings, append them together (known as "concatenation") and return the result.
         However, if the concatenation creates a double-char, then omit one of the chars, so "abc" and "cat" yields "abcat".
@@ -251,6 +267,7 @@ public class StringOne {
             return a + b;
         }
     }
+
 
     /*
         Given a string and an int n, return a string made of the first and last n chars from the string. The string length will be at least n.
