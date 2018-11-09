@@ -3,6 +3,9 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -11,28 +14,6 @@ import java.util.regex.Pattern;
  * https://codingbat.com/java/String-2
  */
 public class StringTwo {
-
-    /*
-        TODO: Given a string, does "xyz" appear in the middle of the string? To define middle, we'll say that the number of chars to the left and right of the "xyz" must differ by at most one. This problem is harder than it looks.
-
-        xyzMiddle("AAxyzBB") → true
-        xyzMiddle("AxyzBB") → true
-        xyzMiddle("AxyzBBB") → false
-
-        xyzMiddle("AAxyzBB") → true	true	OK
-        xyzMiddle("AxyzBB") → true	false	X
-        xyzMiddle("xyzxyzxyzBxyzxyz") → true	false	X
-        xyzMiddle("xyzxyzAxyzxyzxyz") → true	true	OK
-        xyzMiddle("xyzz") → true	false	X
-
-        public boolean xyzMiddle(String str) {
-        if (str.length() < 3) {
-            return false;
-        }
-        String check = str.substring(str.length() / 2 - 1, str.length() / 2 + 2);
-        return check.equals("xyz");
-        }
-    */
 
     /*
         TODO: Return a version of the given string, where for every star (*) in the string the star and the chars immediately to its left and right are gone. So "ab*cd" yields "ad" and "ab**cd" also yields "ad".
@@ -49,17 +30,6 @@ public class StringTwo {
         prefixAgain("abXYabc", 2) → true
         prefixAgain("abXYabc", 3) → false
     */
-
-    /*
-        TODO: Return a version of the given string, where for every star (*) in the string the star and the chars immediately to its left and right are gone. So "ab*cd" yields "ad" and "ab**cd" also yields "ad".
-
-
-        starOut("ab*cd") → "ad"
-        starOut("ab**cd") → "ad"
-        starOut("sm*eilly") → "silly"
-
-    */
-
 
     /*
         TODO: Return true if the given string contains an appearance of "xyz" where the xyz is not directly preceeded by a period (.). So "xxyz" counts but "x.xyz" does not.
@@ -105,14 +75,33 @@ public class StringTwo {
         }
     */
 
-    @Test
-    public void test() {
+     /*
+        Return a version of the given string, where for every star (*) in the string the star and the chars immediately
+        to its left and right are gone. So "ab*cd" yields "ad" and "ab**cd" also yields "ad".
 
-//        Assert.assertEquals(oneTwo("abc"), "bca");
-//        Assert.assertEquals(oneTwo("tca"), "cat");
-//        Assert.assertEquals(oneTwo("tcagdo"), "catdog");
+        starOut("ab*cd") → "ad"
+        starOut("ab**cd") → "ad"
+        starOut("sm*eilly") → "silly"
 
-        System.out.println(zipZap("zipXzap"));
+    */
+
+    public String starOut(String str) {
+        char[] result = str.toCharArray();
+        for (int i = 0; i < result.length; i++) {
+            if (result[i] == '*') {
+                result[i] = ' ';
+                if (i > 0) {
+                    result[i-1] = ' ';
+                }
+                if (i+1 < result.length) {
+                    if (result[i+1] == '*') {
+                    } else {
+                        result[i+1] = ' ';
+                    }
+                }
+            }
+        }
+        return String.valueOf(result).replaceAll(" ", "");
     }
 
 
@@ -277,6 +266,48 @@ public class StringTwo {
             }
         }
         return result;
+    }
+
+
+    /*
+        Given a string, does "xyz" appear in the middle of the string? To define middle, we'll say that the number of
+        chars to the left and right of the "xyz" must differ by at most one. This problem is harder than it looks.
+
+        xyzMiddle("AAxyzBB") → true
+        xyzMiddle("AxyzBB") → true
+        xyzMiddle("AxyzBBB") → false
+
+    */
+
+    public boolean xyzMiddle(String str) {
+
+        if (str.length() < 3) {
+            return false;
+        }
+
+        int left = 0;
+        int right = 0;
+
+        char middle = str.charAt(str.length()/2);
+        char middle2 = str.charAt(str.length()/2+1);
+
+        if (middle == 'y' && str.length() % 2 == 0) {
+            right = (str.length() - str.length()/2) - 2;
+            left = str.length()/2 - 1;
+        } else if (middle == 'y' && middle2 == 'z' && str.length() % 2 != 0) {
+            right = (str.length() - str.length()/2) - 2;
+            left = str.length()/2 - 1;
+        } else if (middle == 'z' && str.length() %2 == 0) {
+            right = (str.length() - str.length()/2) - 1;
+            left = str.length()/2 - 2;
+        } else if (middle == 'x') {
+            right = (str.length() - str.length()/2) - 3;
+            left = str.length()/2;
+        } else {
+            return false;
+        }
+
+        return ((right - left <= 1 && right - left >= 0) || (left - right <= 1 && left - right >= 0));
     }
 
 

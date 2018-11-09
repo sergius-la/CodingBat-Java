@@ -1,6 +1,7 @@
-# CodingBat-Java
+# Solutions to CodingBat problems - Java
 
 > CodingBat is a free site of live coding problems to build coding skill in Java and Python. CodingBat is a project by Nick Parlante, a computer science lecturer at Stanford. https://codingbat.com
+
 
 * [Warmup-1](https://github.com/sergius-la/CodingBat-Java/blob/master/src/main/java/WarmupOne.java) - Simple warmup problems to get started.
 
@@ -19,6 +20,8 @@
 * [Array-2](https://github.com/sergius-la/CodingBat-Java/blob/master/src/main/java/ArrayTwo.java) - Medium array problems -- 1 loop.
 
 * [Logic-1](https://github.com/sergius-la/CodingBat-Java/blob/master/src/main/java/LogicOne.java) - (todo: Add Task) Basic boolean logic puzzles.
+
+* [Logic-2](https://github.com/sergius-la/CodingBat-Java/blob/master/src/main/java/LogicTwo.java) - (todo: Add Task) Medium boolean logic puzzles.
 
 * [Functional-1](https://github.com/sergius-la/CodingBat-Java/blob/master/src/main/java/FunctionalOne.java) - The main computation for each of these problems can be done with 1 line of lambda code.
 

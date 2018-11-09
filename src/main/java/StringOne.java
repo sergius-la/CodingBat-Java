@@ -1,3 +1,5 @@
+import java.util.Map;
+
 /**
  *  CodingBat: String-2
  *  https://codingbat.com/java/String-2
@@ -49,38 +51,27 @@ public class StringOne {
 
     */
 
+
     /*
-        TODO: Given a string and an index, return a string length 2 starting at the given index. If the index is too big or too small to define a string length 2, use the first 2 chars. The string length will be at least 2.
+        Given a string and an index, return a string length 2 starting at the given index. If the index is too big or
+        too small to define a string length 2, use the first 2 chars. The string length will be at least 2.
 
         twoChar("java", 0) → "ja"
         twoChar("java", 2) → "va"
         twoChar("java", 3) → "ja"
 
-        public String twoChar(String str, int index) {
-        if ((index + 2) <= str.length()) {
+    */
+
+    public String twoChar(String str, int index) {
+        if (index < 0) {
+            return str.substring(0, 2);
+        } else if ((index + 2) <= str.length()) {
             return str.substring(index, index + 2);
         } else {
             return str.substring(0, 2);
         }
-        }
+    }
 
-        twoChar("java", 0) → "ja"	"ja"	OK
-        twoChar("java", 2) → "va"	"va"	OK
-        twoChar("java", 3) → "ja"	"ja"	OK
-        twoChar("java", 4) → "ja"	"ja"	OK
-        twoChar("java", -1) → "ja"	StringIndexOutOfBoundsException: String index out of range: -1 (line:3)	X
-        twoChar("Hello", 0) → "He"	"He"	OK
-        twoChar("Hello", 1) → "el"	"el"	OK
-        twoChar("Hello", 99) → "He"	"He"	OK
-        twoChar("Hello", 3) → "lo"	"lo"	OK
-        twoChar("Hello", 4) → "He"	"He"	OK
-        twoChar("Hello", 5) → "He"	"He"	OK
-        twoChar("Hello", -7) → "He"	StringIndexOutOfBoundsException: String index out of range: -7 (line:3)	X
-        twoChar("Hello", 6) → "He"	"He"	OK
-        twoChar("Hello", -1) → "He"	StringIndexOutOfBoundsException: String index out of range: -1 (line:3)	X
-        twoChar("yay", 0) → "ya"	"ya"	OK
-
-    */
 
     /*
         Given a string, if one or both of the first 2 chars is 'x', return the string without those 'x' chars, and otherwise return the string unchanged. This is a little harder than it looks.
