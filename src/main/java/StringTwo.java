@@ -1,11 +1,7 @@
 
-import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -15,65 +11,23 @@ import java.util.regex.Pattern;
  */
 public class StringTwo {
 
-    /*
-        TODO: Return a version of the given string, where for every star (*) in the string the star and the chars immediately to its left and right are gone. So "ab*cd" yields "ad" and "ab**cd" also yields "ad".
-
-        starOut("ab*cd") → "ad"
-        starOut("ab**cd") → "ad"
-        starOut("sm*eilly") → "silly"
-    */
-
-    /*
-        TODO: Given a string, consider the prefix string made of the first N chars of the string. Does that prefix string appear somewhere else in the string? Assume that the string is not empty and that N is in the range 1..str.length().
-
-        prefixAgain("abXYabc", 1) → true
-        prefixAgain("abXYabc", 2) → true
-        prefixAgain("abXYabc", 3) → false
-    */
+    @Test
+    public void test() {
+//       System.out.println(notReplace("is test"));
+//       System.out.println(notReplace("is-is"));
+//       System.out.println(notReplace("This is right"));
+    }
 
     /*
-        TODO: Return true if the given string contains an appearance of "xyz" where the xyz is not directly preceeded by a period (.). So "xxyz" counts but "x.xyz" does not.
+        A sandwich is two pieces of bread with something in between. Return the string that is between the first and last appearance of "bread"
+        in the given string, or return the empty string "" if there are not two pieces of bread.
 
-        xyzThere("abcxyz") → true
-        xyzThere("abc.xyz") → false
-        xyzThere("xyz.abc") → true
-
-        xyzThere("abcxyz") → true	true	OK
-        xyzThere("abc.xyz") → false	false	OK
-        xyzThere("xyz.abc") → true	true	OK
-        xyzThere("abcxy") → false	false	OK
-        xyzThere("xyz") → true	true	OK
-        xyzThere("xy") → false	false	OK
-        xyzThere("x") → false	false	OK
-        xyzThere("") → false	false	OK
-        xyzThere("abc.xyzxyz") → true	false	X
-        xyzThere("abc.xxyz") → true	false	X
-        xyzThere(".xyz") → false	false	OK
-        xyzThere("12.xyz") → false	false	OK
-        xyzThere("12xyz") → true	true	OK
-        xyzThere("1.xyz.xyz2.xyz") → false	true	X
-
-
-        public boolean xyzThere(String str) {
-        if (str.contains(".")) {
-            return (str.contains("xyz."));
-        } else {
-            return (str.contains("xyz"));
-        }
-        }
+        getSandwich("breadjambread") → "jam"
+        getSandwich("xxbreadjambreadyy") → "jam"
+        getSandwich("xxbreadyy") → ""
     */
 
-    /*
-        TODO: Given two strings, a and b, create a bigger string made of the first char of a, the first char of b, the second char of a, the second char of b, and so on. Any leftover chars go at the end of the result.
 
-        mixString("abc", "xyz") → "axbycz"
-        mixString("Hi", "There") → "HTihere"
-        mixString("xxxx", "There") → "xTxhxexre"
-
-        public String mixString(String a, String b) {
-
-        }
-    */
 
      /*
         Return a version of the given string, where for every star (*) in the string the star and the chars immediately
