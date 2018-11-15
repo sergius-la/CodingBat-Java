@@ -1,5 +1,9 @@
 import org.testng.annotations.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * CodingBat: AP-1
  * https://codingbat.com/java/AP-1
@@ -8,8 +12,50 @@ public class ApOne {
 
     @Test
     void test() {
-        int[] nums = {2, 2, 4, 4};
-        System.out.println(scoresAverage(nums));
+        int[] nums = {3, 2, 4, 5, 8};
+        System.out.println(Arrays.toString(copyEvens(nums, 2)));
+    }
+
+    /*
+        Given an array of positive ints, return a new array of length "count" containing the first even numbers from the original array.
+        The original array will contain at least "count" even numbers.
+
+        copyEvens([3, 2, 4, 5, 8], 2) → [2, 4]
+        copyEvens([3, 2, 4, 5, 8], 3) → [2, 4, 8]
+        copyEvens([6, 1, 2, 4, 5, 8], 3) → [6, 2, 4]
+    */
+
+    public int[] copyEvens(int[] nums, int count) {
+        int[] result = new int[count];
+        for (int i = 0, j = 0; i < nums.length; i++) {
+            if (nums[i] %2 == 0) {
+                result[j] = nums[i];
+                j++;
+                if (j == count) {
+                    break;
+                }
+            }
+        }
+        return result;
+    }
+
+    /*
+        Given an array of strings, return a new List (e.g. an ArrayList) where all the strings of the given length are omitted.
+        See wordsWithout() below which is more difficult because it uses arrays.
+
+        wordsWithoutList(["a", "bb", "b", "ccc"], 1) → ["bb", "ccc"]
+        wordsWithoutList(["a", "bb", "b", "ccc"], 3) → ["a", "bb", "b"]
+        wordsWithoutList(["a", "bb", "b", "ccc"], 4) → ["a", "bb", "b", "ccc"]
+    */
+
+    public List wordsWithoutList(String[] words, int len) {
+        ArrayList<String> result = new ArrayList<>();
+        for (String i : words) {
+            if (i.length() != len) {
+                result.add(i);
+            }
+        }
+        return result;
     }
 
     /*

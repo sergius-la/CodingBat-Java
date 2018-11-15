@@ -1,5 +1,8 @@
 import org.testng.annotations.Test;
+
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * CodingBat: Array-2
@@ -11,14 +14,7 @@ public class ArrayThree {
     void test() {
         int[] nums1 = {5, 3, 5, 4, 5, 4, 5, 4, 3, 5, 3, 5};
         System.out.println(Arrays.toString(fix34(nums1)));
-
-//        int[] nums2 = {1, 3, 1, 4, 4, 3, 1};
-//        System.out.println(Arrays.toString(fix34(nums2)));
-//
-//        int[] nums3 = {1, 1, 1, 1, 1};
-////        System.out.println(countClumps(nums3));
     }
-
 
     /*
         Return an array that contains exactly the same numbers as the given array, but rearranged so that every 3 is
