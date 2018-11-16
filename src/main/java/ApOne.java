@@ -12,8 +12,49 @@ public class ApOne {
 
     @Test
     void test() {
-        int[] nums = {3, 2, 4, 5, 8};
-        System.out.println(Arrays.toString(copyEvens(nums, 2)));
+        int[] a = {1, 100, 99, 100};
+        System.out.println(scores100(a));
+    }
+
+    /*
+        Given an array of scores, return true if there are scores of 100 next to each other in the array. The array length will be at least 2.
+
+        scores100([1, 100, 100]) → true
+        scores100([1, 100, 99, 100]) → false
+        scores100([100, 1, 100, 100]) → true
+    */
+
+    public boolean scores100(int[] scores) {
+        for (int i = 0; i < scores.length-1; i++) {
+            if (scores[i] == 100 && scores[i+1] == 100) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /*
+        The "key" array is an array containing the correct answers to an exam, like {"a", "a", "b", "b"}. the "answers"
+        array contains a student's answers, with "?" representing a question left blank. The two arrays are not empty and are the same length.
+        Return the score for this array of answers, giving +4 for each correct answer, -1 for each incorrect answer, and +0 for each blank answer.
+
+        scoreUp(["a", "a", "b", "b"], ["a", "c", "b", "c"]) → 6
+        scoreUp(["a", "a", "b", "b"], ["a", "a", "b", "c"]) → 11
+        scoreUp(["a", "a", "b", "b"], ["a", "a", "b", "b"]) → 16
+    */
+
+    public int scoreUp(String[] key, String[] answers) {
+        int result = 0;
+        for (int i = 0; i < key.length; i++) {
+            if (answers[i].equals("?")) {
+
+            } else if (key[i].equals(answers[i])) {
+                result += 4;
+            } else {
+                result--;
+            }
+        }
+        return result;
     }
 
     /*

@@ -7,21 +7,23 @@
 
 * [Warmup-2](https://github.com/sergius-la/CodingBat-Java/blob/master/src/main/java/WarmupTwo.java) - Medium warmup string/array loops.
 
-* [String-1](https://github.com/sergius-la/CodingBat-Java/blob/master/src/main/java/StringOne.java) (todo) - Basic string problems -- no loops. Use + to combine Strings, str.length() is the number of chars in a String, str.substring(i, j) extracts the substring starting at index i and running up to but not including index j.
+* [String-1](https://github.com/sergius-la/CodingBat-Java/blob/master/src/main/java/StringOne.java) - Basic string problems -- no loops.
 
-* [String-2](https://github.com/sergius-la/CodingBat-Java/blob/master/src/main/java/StringTwo.java) (todo) 
+* [String-2](https://github.com/sergius-la/CodingBat-Java/blob/master/src/main/java/StringTwo.java) - Medium String problems -- 1 loop.
+
+* [String-3](https://github.com/sergius-la/CodingBat-Java/blob/master/src/main/java/StringThree.java) - Harder String problems -- 2 loops.
 
 * [Map-1](https://github.com/sergius-la/CodingBat-Java/blob/master/src/main/java/MapOne.java) - Basic Map get()/put(), no loops. These can be solved with just get(), put(), and containsKey().
 
-* [Map-2](https://github.com/sergius-la/CodingBat-Java/blob/master/src/main/java/MapTwo.java) (todo) -  Maps with bulk data and loops.
+* [Map-2](https://github.com/sergius-la/CodingBat-Java/blob/master/src/main/java/MapTwo.java) -  Maps with bulk data and loops.
 
-* [Array-1](https://github.com/sergius-la/CodingBat-Java/blob/master/src/main/java/ArrayOne.java) - Basic array problems -- no loops.. Use a[0], a[1], ... to access elements in an array, a.length is the length.
+* [Array-1](https://github.com/sergius-la/CodingBat-Java/blob/master/src/main/java/ArrayOne.java) - Basic array problems -- no loops.
 
 * [Array-2](https://github.com/sergius-la/CodingBat-Java/blob/master/src/main/java/ArrayTwo.java) - Medium array problems -- 1 loop.
 
-* [Logic-1](https://github.com/sergius-la/CodingBat-Java/blob/master/src/main/java/LogicOne.java) - (todo: Add Task) Basic boolean logic puzzles.
+* [Logic-1](https://github.com/sergius-la/CodingBat-Java/blob/master/src/main/java/LogicOne.java) - Basic boolean logic puzzles.
 
-* [Logic-2](https://github.com/sergius-la/CodingBat-Java/blob/master/src/main/java/LogicTwo.java) - (todo: Add Task) Medium boolean logic puzzles.
+* [Logic-2](https://github.com/sergius-la/CodingBat-Java/blob/master/src/main/java/LogicTwo.java) - Medium boolean logic puzzles.
 
 * [Functional-1](https://github.com/sergius-la/CodingBat-Java/blob/master/src/main/java/FunctionalOne.java) - The main computation for each of these problems can be done with 1 line of lambda code.
 
