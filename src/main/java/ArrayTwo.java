@@ -1,7 +1,3 @@
-import org.testng.annotations.Test;
-
-import java.util.Arrays;
-
 /**
  *  CodingBat: Array-2
  *  https://codingbat.com/java/Array-2

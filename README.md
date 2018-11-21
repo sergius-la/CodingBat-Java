@@ -21,6 +21,8 @@
 
 * [Array-2](https://github.com/sergius-la/CodingBat-Java/blob/master/src/main/java/ArrayTwo.java) - Medium array problems -- 1 loop.
 
+* [Array-3](https://github.com/sergius-la/CodingBat-Java/blob/master/src/main/java/ArrayThree.java) - Harder array problems -- 2 loops, more complex logic.
+
 * [Logic-1](https://github.com/sergius-la/CodingBat-Java/blob/master/src/main/java/LogicOne.java) - Basic boolean logic puzzles.
 
 * [Logic-2](https://github.com/sergius-la/CodingBat-Java/blob/master/src/main/java/LogicTwo.java) - Medium boolean logic puzzles.
