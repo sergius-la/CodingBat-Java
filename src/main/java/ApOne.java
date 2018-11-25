@@ -17,6 +17,24 @@ public class ApOne {
     }
 
     /*
+        Given an array of scores sorted in increasing order, return true if the array contains 3 adjacent scores that differ from each other by at most 2,
+        such as with {3, 4, 5} or {3, 5, 5}.
+
+        scoresClump([3, 4, 5]) → true
+        scoresClump([3, 4, 6]) → false
+        scoresClump([1, 3, 5, 5]) → true
+    */
+
+    public boolean scoresClumpAlt(int[] scores) {
+        for (int i = 0; i <= scores.length-3; i++) {
+            if (Math.abs(scores[i] - scores[i+2]) <= 2) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /*
         Start with two arrays of strings, a and b, each in alphabetical order, possibly with duplicates.
         Return the count of the number of strings which appear in both arrays.
         The best "linear" solution makes a single pass over both arrays, taking advantage of the fact that they are in alphabetical order.
