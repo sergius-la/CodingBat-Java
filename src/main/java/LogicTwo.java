@@ -1,5 +1,3 @@
-import org.testng.annotations.Test;
-
 /**
  * Logic-2
  * https://codingbat.com/java/Logic-2
@@ -7,22 +5,28 @@ import org.testng.annotations.Test;
 public class LogicTwo {
 
     /*
-        TODO: We want make a package of goal kilos of chocolate. We have small bars (1 kilo each) and big bars (5 kilos each).
+        We want make a package of goal kilos of chocolate. We have small bars (1 kilo each) and big bars (5 kilos each).
         Return the number of small bars to use, assuming we always use big bars before small bars. Return -1 if it can't be done.
 
         makeChocolate(4, 1, 9) → 4
         makeChocolate(4, 1, 10) → -1
         makeChocolate(4, 1, 7) → 2
-
-        public int makeChocolate(int small, int big, int goal) {
-
-        }
     */
 
-    @Test
-    public void test() {
-        int num = 6643;
-        System.out.println(round(num));
+    public int makeChocolate(int small, int big, int goal) {
+        if (goal %5 == 0 && goal / 5 <= big) {
+            return 0;
+        }
+
+        int needSmall = (goal - (big * 5) > 0) ? goal - (big * 5) : goal - ((goal / 5) * 5);
+
+        if (needSmall - small == 0) {
+            return small;
+        } else if (needSmall - small > 0) {
+            return -1;
+        } else {
+            return needSmall;
+        }
     }
 
 
