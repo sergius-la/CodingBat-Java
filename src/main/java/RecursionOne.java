@@ -1,7 +1,7 @@
 import org.testng.annotations.Test;
 
 /**
- * CodingBat: Recursion-1
+ * CodingBat: Recursion
  * https://codingbat.com/java/Recursion-1
  */
 public class RecursionOne {
