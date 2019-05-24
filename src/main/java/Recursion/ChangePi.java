@@ -15,6 +15,11 @@ public class ChangePi {
     }
 
     public static String changePi(String str) {
-        return "";
+        if (str.isEmpty()) return "";
+        if (str.startsWith("pi")) {
+            return str.replace("pi", "3.14");
+        } else {
+            return str.charAt(0) + changePi(str.substring(1));
+        }
     }
 }
