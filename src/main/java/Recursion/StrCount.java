@@ -13,10 +13,18 @@ public class StrCount {
         System.out.println(StrCount.strCount("catcowcat", "cat")); // 2
         System.out.println(StrCount.strCount("aaabababab", "aa")); // 1
         System.out.println(StrCount.strCount("xyx", "x")); // 2
+        System.out.println(StrCount.strCount("iiiijj", "i")); // 4
+        System.out.println(StrCount.strCount("aaabababab", "a")); // 6
     }
 
     public static int strCount(String str, String sub) {
-       return -1;
-
+        if (str.isEmpty()) return 0;
+        int res = 0;
+        int i = 1;
+        if (str.startsWith(sub)) {
+            res++;
+            i = sub.length();
+        }
+        return res + strCount(str.substring(i), sub);
     }
 }
